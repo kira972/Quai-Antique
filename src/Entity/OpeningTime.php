@@ -29,6 +29,10 @@ class OpeningTime
     #[ORM\Column(length: 11)]
     private ?string $dayOfWeek = null;
 
+    #[ORM\ManyToOne(inversedBy: 'openingTimeRest')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Restaurant $restaurant = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +94,18 @@ class OpeningTime
     public function setDayOfWeek(string $dayOfWeek): self
     {
         $this->dayOfWeek = $dayOfWeek;
+
+        return $this;
+    }
+
+    public function getRestaurant(): ?Restaurant
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant(?Restaurant $restaurant): self
+    {
+        $this->restaurant = $restaurant;
 
         return $this;
     }

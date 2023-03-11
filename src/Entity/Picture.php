@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PictureRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PictureRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity('name')]
 #[ORM\Entity(repositoryClass: PictureRepository::class)]
 class Picture
 {
@@ -25,6 +27,10 @@ class Picture
 
     #[ORM\Column(nullable: true)]
     private ?bool $isFavorite = null;
+
+    #[ORM\OneToOne(inversedBy: 'pictures', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -75,6 +81,18 @@ class Picture
     public function setIsFavorite(?bool $isFavorite): self
     {
         $this->isFavorite = $isFavorite;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RestaurantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
@@ -30,6 +32,18 @@ class Restaurant
 
     #[ORM\Column(length: 5)]
     private ?string $postCode = null;
+
+    #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
+    #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: OpeningTime::class)]
+    private Collection $openingTimeRest;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+        $this->openingTimeRest = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +118,66 @@ class Restaurant
     public function setPostCode(string $postCode): self
     {
         $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getRestaurant() === $this) {
+                $reservation->setRestaurant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OpeningTime>
+     */
+    public function getOpeningTimeRest(): Collection
+    {
+        return $this->openingTimeRest;
+    }
+
+    public function addOpeningTimeRest(OpeningTime $openingTimeRest): self
+    {
+        if (!$this->openingTimeRest->contains($openingTimeRest)) {
+            $this->openingTimeRest->add($openingTimeRest);
+            $openingTimeRest->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpeningTimeRest(OpeningTime $openingTimeRest): self
+    {
+        if ($this->openingTimeRest->removeElement($openingTimeRest)) {
+            // set the owning side to null (unless already changed)
+            if ($openingTimeRest->getRestaurant() === $this) {
+                $openingTimeRest->setRestaurant(null);
+            }
+        }
 
         return $this;
     }

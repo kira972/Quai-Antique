@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\FormuleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FormuleRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity('name')]
 #[ORM\Entity(repositoryClass: FormuleRepository::class)]
 class Formule
 {
@@ -22,6 +24,10 @@ class Formule
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
+
+    #[ORM\ManyToOne(inversedBy: 'formule')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Menu $menu = null;
 
     public function getId(): ?int
     {
@@ -60,6 +66,18 @@ class Formule
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getMenu(): ?Menu
+    {
+        return $this->menu;
+    }
+
+    public function setMenu(?Menu $menu): self
+    {
+        $this->menu = $menu;
 
         return $this;
     }

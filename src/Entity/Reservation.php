@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ReservationRepository;
@@ -29,6 +31,22 @@ class Reservation
 
     #[ORM\Column(length: 50)]
     private ?string $allergie = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Restaurant $restaurant = null;
+
+    #[ORM\ManyToMany(targetEntity: Allergie::class, mappedBy: 'reservation')]
+    private Collection $allergieReserv;
+
+    public function __construct()
+    {
+        $this->allergieReserv = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -91,6 +109,57 @@ class Reservation
     public function setAllergie(string $allergie): self
     {
         $this->allergie = $allergie;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getRestaurant(): ?Restaurant
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant(?Restaurant $restaurant): self
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Allergie>
+     */
+    public function getAllergieReserv(): Collection
+    {
+        return $this->allergieReserv;
+    }
+
+    public function addAllergieReserv(Allergie $allergieReserv): self
+    {
+        if (!$this->allergieReserv->contains($allergieReserv)) {
+            $this->allergieReserv->add($allergieReserv);
+            $allergieReserv->addReservation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAllergieReserv(Allergie $allergieReserv): self
+    {
+        if ($this->allergieReserv->removeElement($allergieReserv)) {
+            $allergieReserv->removeReservation($this);
+        }
 
         return $this;
     }

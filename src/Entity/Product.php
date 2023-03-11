@@ -19,6 +19,13 @@ class Product
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\OneToOne(mappedBy: 'product', cascade: ['persist', 'remove'])]
+    private ?Picture $pictures = null;
+
+    #[ORM\ManyToOne(inversedBy: 'categories')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +51,35 @@ class Product
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPictures(): ?Picture
+    {
+        return $this->pictures;
+    }
+
+    public function setPictures(Picture $pictures): self
+    {
+        // set the owning side of the relation if necessary
+        if ($pictures->getProduct() !== $this) {
+            $pictures->setProduct($this);
+        }
+
+        $this->pictures = $pictures;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
