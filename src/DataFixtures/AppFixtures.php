@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-    //Allergies
+    //Allergie
         for ($j=0; $j < 10; $j++) { 
             $allergie = new Allergie();
             $allergie->setDescription($faker->word(3))

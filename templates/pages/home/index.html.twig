@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Accueil{% endblock %}
+{% block body %}
+    <!-- Welcome Section Start -->
+    <div id="welcome">
+        <div class="container">
+            <h3>Bienvenue au Quai Antique</h3>
+            <p>Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes. <br>Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
+        </div>
+    </div>
+    <!-- Welcome Section End -->
+    <!-- Menu Section Start -->
+    <section id="food-menu">
+        <div class="container">
+            <header class="section-header">
+                <h3>Un avant-goût de nos spécialités</h3>
+            </header>
+            <div class="row mt-4">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/burritos.jpg")}}"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/ceviche.jpg")}}"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/enchilada.jpg")}}" />
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/pozole.jpg")}}" />
+                    </div>
+                </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/chilaquiles.jpg")}}" />
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/quesadillas.jpg")}}" />
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/tostadas.jpg")}}" />
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/tacos.jpg")}}" />
+                    </div> 
+                </div>
+            </div>
+            <div id="welcome">                
+                <a href="#">Réserver</a>
+            </div>    
+    </section>
+    <!-- Menu Section End-->
+    <!-- Contact Section Start -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h3>Contacter nous</h3>
+            </div>                
+            <div class="row contact-detail">
+                <div class="col-md-6">
+                    <div class="contact-col-1">
+                        <div class="contact-hours">
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Lundi : 12h-14h / 19h-22h</p>
+                            <p>Mardi : 12h-14h / 19h-22h</p>
+                            <p>Mercredi : 12h-14h / 19h-22h</p>
+                            <p>Jeudi : 12h-14h / 19h-22h</p>
+                            <p>Vendredi : 12h-14h / 19h-22h</p>
+                            <p>Samedi : 12h-14h / 19h-22h</p>
+                            <p>Dimanche : Fermé</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-col-2">
+                        <div class="contact-info">
+                            <h4>Contactez-nous</h4>
+                            <p>27, rue du Paradis</p>
+                            <p>44000 Nantes</p>
+                            <p><a href=" 05 96 52 30 23"></a> 05 96 52 30 23</p>
+                            <p><a href="Quai Antique@resto.fr">Quai Antique@resto.fr</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock %}
