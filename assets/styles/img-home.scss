@@ -1,0 +1,79 @@
+/* ================================================= */
+/* -------------- Food Menu Section ---------------- */
+/* ================================================= */
+
+#food-menu {
+  position: relative;
+  padding: 60px 0 30px 0;
+  text-align: center;
+  background: #ffffff;
+}
+
+#food-menu .single-menu {
+  position: relative;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  padding: 0;
+  border-radius: 6px;
+  background: #353535;
+}
+
+#food-menu .single-menu img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 0 9px rgba(70, 49, 10, 0.8);
+}
+
+#food-menu .single-menu div {
+  position: absolute;
+  width: 65px;
+  height: 45px;
+  top: 0;
+  right: 0;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  background: rgba(188, 155, 93, 0.8);
+  border-radius: 0 6px 0 6px;
+  z-index: 1;
+}
+
+#food-menu .single-menu h4 {
+  position: absolute;
+  width: 100%;
+  bottom: 88px;
+  padding: 10px;
+  color: #353535;
+  background: rgba(188, 155, 93, 0.8);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+#food-menu .single-menu div span {
+  display: block;
+}
+
+#food-menu .single-menu p {
+  padding: 0 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#food-menu .single-menu a {
+  display: inline-block;
+  margin: 30px 0;
+  padding: 7px 30px;
+  color: #353535;
+  background: #bc9b5d;
+  border-radius: 30px;
+}
+
+#food-menu .single-menu:hover a {
+  color: #bc9b5d;
+  background: #ffffff;
+}

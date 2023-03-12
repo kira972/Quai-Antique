@@ -60,12 +60,13 @@ class AppFixtures extends Fixture
 
     //Restaurant
     $restaurant = New Restaurant();
-    $restaurant->setName($faker->name())
-        ->setPhoneNumber($faker->phoneNumber())
-        ->setMail($faker->email())
-        ->setAddress($faker->address())
-        ->setCity($faker->city())
-        ->setPostcode($faker->postcode());
+    $restaurant->setName($faker->name('Quai Antique'))
+        ->setPhoneNumber($faker->phoneNumber('0596523023'))
+        ->setMail($faker->email('QuaiAntique@resto.fr'))
+        ->setAddress($faker->address('27, rue du Paradis'))
+        ->setPostcode($faker->postcode('44000'))
+        ->setCity($faker->city('Nantes'));
+        
 
     $manager->persist($restaurant);
 

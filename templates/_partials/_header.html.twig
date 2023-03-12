@@ -3,23 +3,61 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600|Pacifico" rel="stylesheet"> 
 <!-- Top Header Start -->
 <section id="top-header">
-    <div class="logo">
+    <div class="logo mb-3">
         <img src="{{ asset('build/images/log.png') }}"/>
     </div>
 </section>
 <!-- Header Start -->
-<header id="header">
+<!--<header id="header">
     <div class="container">
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="index.html.twig">Accueil</a></li>
+                <li class="menu-active"><a href="{{ path("app_home") }}">Accueil</a></li>
                 <li><a href="carte.html">Carte</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
                 <li><a href="reservation.html">Réservation</a></li>
-                <li><a href="pages/security/login.html.twig">Se connecter</a></li>
+                <li><a href="{{ path("security.login") }}">Se connecter</a></li>
             </ul>
         </nav>
     </div>
-</header>
+</header>-->
 <!-- Header End -->
+<nav class="navbar navbar-expand-lg" id="nav-menu-container">
+  <div class="container-fluid mx-lg-5 mx-2">
+    <!--<a class="navbar-brand" href="#"></a>-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_carte") }}">Carte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_menu") }}">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_galerie") }}">Galerie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_reservation") }}">Réservation</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("security.login") }}">Se connecter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('security.registration') }}">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("security.login") }}">Déconnecter</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

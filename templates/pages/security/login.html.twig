@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <div id="formConnect">
+    <main class="login-page">
     <div class="container">
-        <h1 class="formtext">Formulaire de connexion</h1>
+        <h1 class="mt-5">Formulaire de connexion</h1>
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -20,37 +20,39 @@
             </div>
         {% endif %}
 
-        <form action="{{ path('security.login') }}" method="post">
+        <form action="{{ path('security.login') }}" method="post" class="login-form">
             <div class="row mb-3">
-                <div class="col">
+                <div class="col-12">
                     <label for="username" class="form-label mt-4">Adresse email</label>
-                    <input type="email" class="form-control" id="username" placeholder="exemple@QuaiAntique.fr" name="_username" value="{{ last_username }}>
+                    <input type="email" class="form-control" id="username" placeholder="exemple@QuaiAntique.fr" name="_username" value="{{ last_username }}">
                 </div>
-                <div class="col">
+                <div class="col-12">
                     <label for="password" class="form-label mt-4">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="_password" placeholder="*******">
                 </div>
             </div>
-            <div class="containerform">
-            <button type="submit" class="btn-connect">
+            <div class="wrapper-btn">
+            <button type="submit" class="btn-custom">
                 Se connecter
             </button>
             </div>
         </form>
     </div>
-    </div>
+    </main>
+<a href="{{ path('security.registration') }}">veuillez vous inscrire ici </a>
 
-<!-- Contact Section Start -->
+
+        <!-- Contact Section Start -->
         <section id="contact">
             <div class="container">
                 <div class="section-header">
-                    <h3>Contacter nous</h3>
+                    <h2 class="mb-4">Contacter nous</h2>
                 </div>                
                 <div class="row contact-detail">
                     <div class="col-md-6">
                         <div class="contact-col-1">
                             <div class="contact-hours">
-                                <h4>Horaires d'ouverture</h4>
+                                <h3>Horaires d'ouverture</h3>
                                 <p>Lundi : 12h-14h / 19h-22h</p>
                                 <p>Mardi : 12h-14h / 19h-22h</p>
                                 <p>Mercredi : 12h-14h / 19h-22h</p>
@@ -64,7 +66,7 @@
                     <div class="col-md-6">
                         <div class="contact-col-2">
                             <div class="contact-info">
-                                <h4>Contactez-nous</h4>
+                                <h3>Contactez-nous</h3>
                                 <p>27, rue du Paradis</p>
                                 <p>44000 Nantes</p>
                                 <p><a href=" 05 96 52 30 23"></a> 05 96 52 30 23</p>

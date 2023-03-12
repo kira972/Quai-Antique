@@ -28,7 +28,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/deconnexion', 'security.logout')]
+    #[Route('/deconnexion', name: 'security.logout')]
     /**
      * This controller allow us to logout
      *
@@ -39,7 +39,7 @@ class SecurityController extends AbstractController
         //Nothing to do here
     }
 
-    #[Route('/inscription', 'security.registration', methods: ['GET', 'POST'])]
+    #[Route('/inscription', name: 'security.registration', methods: ['GET', 'POST'])]
 /**
  * This controller allow us to register
  *

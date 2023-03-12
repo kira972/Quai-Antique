@@ -18,13 +18,54 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class,[
-                'attr'=> [
-                    'class' => 'form-control',
-                    'minlenght' => '2',
-                    'maxlenght' => '180',
-                ],
-            ])
+        ->add('lastname', TextType::class, [
+            'attr' => [
+                'class' => 'form-control',
+                'minlenght' => '2',
+                'maxlenght' => '50',
+            ],
+            'label' => 'Nom',
+            'label_attr' => [
+                'class' => 'form-label mt-4'
+            ],
+            'constraints' => [
+                new Assert\NotBlank(),
+                new Assert\Length(['min' => 2, 'max' => 50])
+            ]
+        ])
+
+        ->add('firstname', TextType::class, [
+            'attr' => [
+                'class' => 'form-control',
+                'minlenght' => '2',
+                'maxlenght' => '50',
+            ],
+            'label' => 'Prénom',
+            'label_attr' => [
+                'class' => 'form-label mt-4'
+            ],
+            'constraints' => [
+                new Assert\NotBlank(),
+                new Assert\Length(['min' => 2, 'max' => 50])
+            ]
+        ])
+
+        ->add('email', EmailType::class, [
+            'attr' => [
+                'class' => 'form-control',
+                'minlenght' => '2',
+                'maxlenght' => '180',
+            ],
+            'label' => 'Adresse email',
+            'label_attr' => [
+                'class' => 'form-label mt-4'
+            ],
+            'constraints' => [
+                new Assert\NotBlank(),
+                new Assert\Email(),
+                new Assert\Length(['min' => 2, 'max' =>180])
+            ]
+        ])
 
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -41,56 +82,12 @@ class RegistrationType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ],
-                    'label' => 'confirmation du mot de passe',
+                    'label' => 'Confirmation du mot de passe',
                     'label_attr' => [
                         'class' => 'form-control'
                     ]
                     ],
                 'invalid_message' => 'Les mots de passe ne correspondent pas.'
-            ])
-
-
-            
-
-            ->add('firstname', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'minlenght' => '2',
-                    'maxlenght' => '50',
-                ],
-                'label' => 'Prénom',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\Length(['min' => 2, 'max' => 50])
-                ],
-                'label' => 'adresse email',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\Email(),
-                    new Assert\Length(['min' => 2, 'max' => 180])
-                ]
-            ])
-
-            ->add('lastname', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'minlenght' => '2',
-                    'maxlenght' => '50',
-                ],
-                'label' => 'Nom',
-                'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\Length(['min' => 2, 'max' => 50])
-                ]
             ])
 
             ->add('allergie', TextType::class,[
@@ -99,7 +96,8 @@ class RegistrationType extends AbstractType
                     'minlenght' => '5',
                     'maxlenght' => '100',
                 ],
-                'label' => 'Vos Allergie ',
+                'required' => false,
+                'label' => 'Vos Allergie (Facultatif) ',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
@@ -113,7 +111,6 @@ class RegistrationType extends AbstractType
                     'class' => 'btn btn-primary mt-4'
                 ]
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void
