@@ -3,18 +3,28 @@
 {% block title %}Hello MenuController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/maril/Desktop/Quai-Antique/src/Controller/MenuController.php'|file_link(0) }}">src/Controller/MenuController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/maril/Desktop/Quai-Antique/templates/menu/index.html.twig'|file_link(0) }}">templates/menu/index.html.twig</a></code></li>
-    </ul>
+<div class="container">
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-dark"><h4>~ Formule du midi ~</h4></div>
+  <div class="card-body text-dark">
+    <p class="card-text text-center">- Entrée au choix<br>- Plat du jour</p>
+  </div>
+  <div class="card-footer bg-transparent border-dark text-center">20 €</div>
 </div>
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-dark"><h5>~ Formule du soir ~</h5></div>
+  <div class="card-body text-dark">
+    <p class="card-text text-center">- Plat au choix<br>- Dessert du jour</p>
+  </div>
+  <div class="card-footer bg-transparent border-dark text-center">20 €</div>
+</div>
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-dark"><h5>~ Formule enfant ~</h5></div>
+  <div class="card-body text-dark">
+    <p class="card-text text-center">- Steack frite<br>- Dessert du jour</p>
+  </div>
+  <div class="card-footer bg-transparent border-dark text-center">12 €</div>
+</div>
+</div>
+
 {% endblock %}
