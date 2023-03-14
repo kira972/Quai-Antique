@@ -50,6 +50,9 @@
       </div>
     </div>
   </div>
+  <div id="welcome">                
+    <a href="{{ path("app_reservation") }}">Réserver</a>
+  </div>
 </main>
     {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
 {% endblock %}

@@ -12,13 +12,12 @@
                 {{ message }}
                 </div>
             {% endfor %}
-            
+            {# {{ dump(picturesIsFavorite) }} #}
             <h1>Bienvenue au Quai Antique</h1>
             <p>Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes.<br>Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
         </div>
     </div>
     <!-- Welcome Section End -->
-
     <!-- Menu Section Start -->
     <section id="food-menu">
         <div class="container">
@@ -26,17 +25,23 @@
                 <h2 class="mb-5">Un avant-goût de nos spécialités</h2>
             </header>
             <div class="row mt-4">
-                <div class="col-sm-6 col-md-4 col-lg-3">
 
+                {% for pictureIsFavorite in picturesIsFavorite %}
+                <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/burritos.jpg")}}"/>
+                            {# <pre>
+                                {{ dump(pictureIsFavorite) }}
+                            </pre> #}
+                        <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.filename)}}" /> 
+                        {# <img class="img-fluid" src="{{asset("build/images/burritos.jpg")}}"/> #}
                         <div class="content">
-                            <div class="text">Burriros</div>
+                            <div class="text">{{pictureIsFavorite.name}}</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
+                {% endfor %}
+            </div>
+                {# <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="single-menu">
                         <img class="img-fluid" src="{{asset("build/images/ceviche.jpg")}}"/>
                         <div class="content">
@@ -75,7 +80,8 @@
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="single-menu">
                         <img class="img-fluid" src="{{asset("build/images/quesadillas.jpg")}}" />
-                        <div class="content">
+                        {# {% <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.name)}}" /> %} #}
+                        {# <div class="content">
                             <div class="text">Quesasillas</div>
                         </div>
                     </div>
@@ -93,16 +99,13 @@
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="single-menu">
                         <img class="img-fluid" src="{{asset("build/images/tacos.jpg")}}" />
-                        {% <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.name)}}" /> %}
                         <div class="content">
                             <div class="text">Tacos</div>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                </div>#}
             <div id="welcome">                
-                <a href="#">Réserver</a>
+                <a href="{{ path("app_reservation") }}">Réserver</a>
             </div>
             
         </div>

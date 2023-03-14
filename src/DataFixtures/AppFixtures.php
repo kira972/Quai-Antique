@@ -143,7 +143,7 @@ class AppFixtures extends Fixture
     }
 
     //Product
-    for ($p=0; $p < 16; $p++) { 
+    for ($p=0; $p < 38; $p++) { 
         $product = New Product();
         $product->setName($faker->word())
             ->setPrice($faker->randomFloat(1,18,36))
@@ -155,11 +155,13 @@ class AppFixtures extends Fixture
 
     //Picture
     // tABLEAU D'images / chgt longueur du for / $filenameArr[$q]
-    for ($q=0; $q < 6; $q++) { 
+    $pictsFilename = ['fajitas.png', 'assortiment.jpg', 'buffet-fiesta.jpg', 'burritos.jpg', 'carlota.jpg', 'ceviche.jpg', 'cheesecake-caramel.png', 'chilaquiles-rojos.png', 'chilaquiles.jpg', 'chilicon.jpg', 'chololat-epice.jpg', 'churros.jpg', 'crevette.jpg', 'empanadas.jpeg', 'enchilada.jpg', 'entrees.jpg', 'horchata.jpg', 'crevette.jpg', 'chilaquiles-rojos.png', 'chilicon.jpg', 'figue.jpg', 'mexicain.avocat.jpg', 'mexican.jpg', 'plat-mexicain.jpg', 'poisson.jpg', 'poisson1.jpeg', 'poisson2.jpg', 'poisson3.jpg', 'poisson4.jpg', 'pozole.jpg', 'pudding.jpg', 'quesadillaS.jpg', 'quesadilla-2.jpeg', 'tacos-beef.jpg', 'tacos-saumon.jpg', 'tacos.jpg', 'tostadas.jpg', 'viandes.jpg',];
+    $pictsName = ['Fajitas', 'Assortiment', 'Buffet fiesta', 'Burritos', 'Carlota', 'Ceviche', 'Cheesecake caramel', 'Chilaquiles rojos', 'Chilaquiles', 'Chilicon', 'Chololat épicé', 'Churros', 'Crevette', 'Empanadas', 'Enchilada', 'Entrées', 'Horchata', 'Crevette', 'Chilaquiles rojos', 'Chilicon', 'Figue', 'Mexican', 'Mexican', 'Plat mexicain', 'Poisson', 'Poisson', 'Poisson', 'Poisson', 'Poisson', 'Pozole', 'Pudding', 'Quesadilla', 'Quesadilla', 'Tacos beef', 'Tacos saumon', 'Tacos', 'Tostadas', 'Viandes',];
+    for ($q=0; $q < count($pictsFilename); $q++) { 
         $picture = New Picture();
-        $picture->setName($faker->word())
+        $picture->setName($pictsName[$q])
             ->setDescription($faker->text(300))
-            ->setFilename("filename.png")
+            ->setFilename($pictsFilename[$q])
             ->setIsFavorite($faker->boolean())
             ->setProduct($faker->unique()->randomElement($products));
 

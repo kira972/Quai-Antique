@@ -11,7 +11,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col">
         <div class="card">
-          <img src="{{asset("build/images/entrées.jpg")}}" class="card-img-top" alt="...">
+          <img src="{{asset("build/images/entrees.jpg")}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h3 class="card-title mt-3">~ Carte Entrées ~</h3>
           <h4 class="mb-4">Notre sélection d'entrées</h4>
@@ -72,6 +72,9 @@
         </div>
         </div>
       </div>
+    </div>
+    <div id="welcome">                
+      <a href="{{ path("app_reservation") }}">Réserver</a>
     </div>
   </main>
 {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}

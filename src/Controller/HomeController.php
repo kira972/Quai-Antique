@@ -22,8 +22,6 @@ class HomeController extends AbstractController
         $restaurant = $restaurantRepository->findOneBy(['name' => 'Quai Antique']);
         $picturesIsFavorite = $pictureRepository->findBy(['isFavorite'=> true], ['name' => 'ASC'], 8);
 
-        dd($picturesIsFavorite);
-
         return $this->render('pages/home/index.html.twig', [
             'openingTimes' => $openingTimes,
             'restaurant' => $restaurant,
