@@ -29,11 +29,8 @@ class Reservation
     #[ORM\Column]
     private ?int $numberCover = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $allergie = null;
-
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
@@ -101,18 +98,6 @@ class Reservation
         return $this;
     }
 
-    public function getAllergie(): ?string
-    {
-        return $this->allergie;
-    }
-
-    public function setAllergie(string $allergie): self
-    {
-        $this->allergie = $allergie;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -145,7 +130,7 @@ class Reservation
         return $this->allergieReserv;
     }
 
-    public function addAllergieReserv(Allergie $allergieReserv): self
+    public function addAllergieReserv(?Allergie $allergieReserv): self
     {
         if (!$this->allergieReserv->contains($allergieReserv)) {
             $this->allergieReserv->add($allergieReserv);

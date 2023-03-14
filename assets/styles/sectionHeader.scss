@@ -1,0 +1,91 @@
+/* ================================================= */
+/* ---------------- Section Header ----------------- */
+/* ================================================= */
+
+// @media (max-width: 767.98px) {
+//   .section-header h2 {
+//     font-size: 38px;
+//   }
+
+//   .section-header h2::before {
+//     height: 6px;
+//   }
+// }
+
+// @media (max-width: 575.98px) {
+//   .section-header h2 {
+//     font-size: 32px;
+//   }
+
+//   .section-header h2::before {
+//     height: 5px;
+//   }
+// }
+
+#welcome {
+  position: relative;
+  padding: 45px 0 45px 0;
+  background: #ffffff;
+  text-align: center;
+}
+
+#welcome .container {
+  max-width: 900px;
+}
+
+#welcome p {
+  font-size: 22px;
+  font-weight: 300;
+  max-width: 45rem;
+  margin-inline: auto;
+  margin-top: 2.5rem;
+  color: #353535;
+}
+
+@media screen and (max-width: 767.98px) {
+  //   #welcome h2 {
+  //     font-size: 40px;
+  //   }
+
+  //   #welcome p {
+  //     font-size: 18px;
+  //     line-height: 28px;
+  //   }
+}
+
+@media screen and (max-width: 575.98px) {
+  //   #welcome h2 {
+  //     font-size: 30px;
+  //     letter-spacing: 0;
+  //   }
+
+  //   #welcome p {
+  //     font-size: 16px;
+  //     // line-height: 26px;
+  //   }
+}
+
+#welcome a {
+  display: inline-block;
+  padding: 12px 35px;
+  border-radius: 35px;
+  color: #353535;
+  background: #bc9b5d;
+  font-weight: bold;
+}
+
+#welcome a:hover {
+  color: #bc9b5d;
+  background: #353535;
+}
+
+.section-header h3 {
+  position: relative;
+  text-align: center;
+  color: #BC9B5D;
+  font-size: 45px;
+  text-transform: capitalize;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Quai Antique - Inscription
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-4">Formulaire d'inscription</h1>
+            {{ form_start(form) }}
+        <div class="register-form">
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12">
+                    {{ form_row(form.firstname) }}
+                </div>
+                <div class="col-12">
+                    {{ form_row(form.lastname) }}
+                </div>
+                <div class="col-12">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="col-12">
+                    {{ form_row(form.plainPassword) }}
+                </div>
+                {# <div class="col-12">
+                    {{ form_row(form.allergie) }}
+                </div> #}
+
+                <div class="col-12">
+                    {{ form_label(form.allergie) }}
+
+                    {{ form_widget(form.allergie) }}
+
+                    <div class="form-error">
+                        {{ form_errors(form.allergie) }}
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    {{ form_label(form.defaultNumberCover) }}
+
+                    {{ form_widget(form.defaultNumberCover) }}
+
+                    <div class="form-error">
+                        {{ form_errors(form.defaultNumberCover) }}
+                    </div>
+                </div>
+
+                <div class="wrapper-btn">
+                    <button type="submit" class="btn-custom">
+                        S'inscrire
+                    </button>
+                </div>
+            </div>
+        </div>
+            {{ form_end(form) }}
+    </div>
+{% endblock %}

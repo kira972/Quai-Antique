@@ -1,0 +1,45 @@
+/* ================================================= */
+/* -------------- Food Menu Section ---------------- */
+/* ================================================= */
+
+#food-menu {
+  position: relative;
+  padding: 60px 0 30px 0;
+  text-align: center;
+  background: #ffffff;
+}
+
+#food-menu .single-menu {
+  position: relative;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  padding: 0;
+  border-radius: 6px;
+  background-color: #353535;
+}
+
+#food-menu .single-menu img {
+  width: 100%;
+  height: 208px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 9px rgba(70, 49, 10, 0.8);
+}
+
+#food-menu .single-menu .content {
+  position: absolute;
+  z-index: 10;
+  font-size: 40px;
+  background-color: rgba(200, 200, 200, 0.5);
+  inset: 0;
+  transform: translateY(0%);
+  transition: all 400ms ease-out;
+  text-align: center;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#food-menu .single-menu .content:hover {
+  opacity: 1;
+}

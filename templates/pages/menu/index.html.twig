@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Menu{% endblock %}
+
+{% block body %}
+
+<main class="container page-menu my-5 ">
+  <h1 class="pb-5">~ Formules du restaurant ~</h1>
+
+  <div class="row g-4">
+    <div class="col-12 col-md-4 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent">
+          <h2 class="h4">~ Formule du midi ~</h2>
+        </div>
+        <div class="card-body text-dark">
+          <p class="card-text text-center">- Entrée au choix<br>- Plat du jour</p>
+        </div>
+        <div class="card-footer bg-transparent text-center fw-bold">
+          20 €
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 col-md-4 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent">
+          <h2 class="h4">~ Formule du soir ~</h2>
+        </div>
+        <div class="card-body text-dark">
+          <p class="card-text text-center">- Plat au choix<br>- Dessert du jour</p>
+        </div>
+        <div class="card-footer bg-transparent text-center fw-bold">
+          20 €
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 col-md-4 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent">
+          <h2 class="h4">~ Formule enfant ~</h2>
+        </div>
+        <div class="card-body text-dark">
+          <p class="card-text text-center">- Steack frite<br>- Dessert du jour</p>
+        </div>
+        <div class="card-footer bg-transparent text-center fw-bold">
+          12 €
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+    {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+{% endblock %}

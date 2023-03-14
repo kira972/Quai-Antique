@@ -1,0 +1,14 @@
+.register-form,
+.login-form {
+  max-width: 600px;
+  margin-inline: auto;
+  .wrapper-btn {
+    margin-block: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.checkbox-inputs > * {
+  margin-right: 0.5rem;
+}

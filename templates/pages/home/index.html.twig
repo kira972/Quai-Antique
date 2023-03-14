@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Accueil{% endblock %}
+{% block body %}
+
+    <!-- Welcome Section Start -->
+    <div id="welcome">
+        <div class="container">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success mt-4">
+                {{ message }}
+                </div>
+            {% endfor %}
+            
+            <h1>Bienvenue au Quai Antique</h1>
+            <p>Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes.<br>Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
+        </div>
+    </div>
+    <!-- Welcome Section End -->
+
+    <!-- Menu Section Start -->
+    <section id="food-menu">
+        <div class="container">
+            <header class="section-header">
+                <h2 class="mb-5">Un avant-goût de nos spécialités</h2>
+            </header>
+            <div class="row mt-4">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/burritos.jpg")}}"/>
+                        <div class="content">
+                            <div class="text">Burriros</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/ceviche.jpg")}}"/>
+                        <div class="content">
+                            <div class="text">Ceviche</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/enchilada.jpg")}}" />
+                        <div class="content">
+                            <div class="text">Enchiladas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/pozole.jpg")}}" />
+                        <div class="content">
+                            <div class="text">Pozole</div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/chilaquiles.jpg")}}" />
+                        <div class="content">
+                            <div class="text">Chilaquiles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/quesadillas.jpg")}}" />
+                        <div class="content">
+                            <div class="text">Quesasillas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/tostadas.jpg")}}" />
+                        <div class="content">
+                            <div class="text">Tostadas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="{{asset("build/images/tacos.jpg")}}" />
+                        {% <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.name)}}" /> %}
+                        <div class="content">
+                            <div class="text">Tacos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="welcome">                
+                <a href="#">Réserver</a>
+            </div>
+            
+        </div>
+    </section>
+    <!-- Menu Section End-->
+    {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+{% endblock %}

@@ -1,2 +1,14 @@
+@import "reset";
 @import "custom";
+@import "navbar.scss";
+@import "sectionHeader.scss";
+@import "contact.scss";
+@import "footer.scss";
+@import "topHeader.scss";
+@import "img-home.scss";
+@import "pages/login-page.scss";
+@import "pages/menu-page.scss";
+@import "pages/registration-page.scss";
+@import "components/form.scss";
+@import "pages/reservation.scss";
 @import "~bootstrap/scss/bootstrap";

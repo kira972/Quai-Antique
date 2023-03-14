@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[UniqueEntity('email')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -20,9 +21,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 2, max: 180)]
+    #[Assert\Email()]
     private ?string $email = null;
 
     #[ORM\Column(type:'json')]
+    #[Assert\NotNull()]
     private array $roles = [];
 
     private ?string $plainPassword;
@@ -30,12 +35,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = null;
+    #[Assert\NotBlank()]
+    private ?string $password = 'password';
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 2, max: 50)]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 2, max: 50)]
     private ?string $lastname = null;
 
     #[ORM\ManyToMany(targetEntity: Allergie::class, inversedBy: 'users')]
@@ -43,6 +53,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
     private Collection $reservations;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $defaultNumberCover = null;
 
     public function __construct()
     {
@@ -214,6 +227,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $reservation->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->lastname;
+    }
+
+    public function getDefaultNumberCover(): ?int
+    {
+        return $this->defaultNumberCover;
+    }
+
+    public function setDefaultNumberCover(?int $defaultNumberCover): self
+    {
+        $this->defaultNumberCover = $defaultNumberCover;
 
         return $this;
     }

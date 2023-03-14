@@ -1,0 +1,102 @@
+/* ================================================= */
+/* ------------------ General CSS ------------------ */
+/* ================================================= */
+* {
+  font-family: "Montserrat", New Century Schoolbook, TeX Gyre Schola, serif;
+}
+body {
+  color: #353535;
+  font-weight: 400;
+  background: #ffffff;
+  font-size: 16px;
+}
+
+a {
+  color: #bc9b5d;
+  text-decoration: none !important;
+  transition: 0.5s;
+}
+a:hover,
+a:active,
+a:focus {
+  color: #353535;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+h1{
+    color: #bc9b5d;
+    font-size: 50px;
+}
+
+h2 {
+  color: #bc9b5d;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+h3 {
+  color: #bc9b5d;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+h4 {
+  color: #bc9b5d;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+
+
+.btn-custom {
+    padding: 12px 35px;
+    border-radius: 35px;
+    color: #353535;
+    background: #bc9b5d;
+    font-weight: bold;
+    transition: 0.5s;
+    outline: none;
+    border: none;
+}
+
+.btn-custom:hover {
+    color: #bc9b5d;
+    background: #353535;
+  }
+
+.back-to-top {
+  position: fixed;
+  display: none;
+  background-color: #bc9b5d;
+  color: #353535;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  line-height: 1;
+  font-size: 18px;
+  border-radius: 50%;
+  right: 15px;
+  bottom: 15px;
+  transition: background-color 0.5s;
+  z-index: 11;
+}
+
+.back-to-top:hover {
+  color: #bc9b5d;
+  background: #353535;
+}
+
+.back-to-top i {
+  padding-top: 10px;
+}

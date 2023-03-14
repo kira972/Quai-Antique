@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quai Antique - Réservation{% endblock %}
+
+{% block body %}
+<!-- Reservations Section Start -->
+    <main id="reservations">
+        <div class="container">
+
+            <header class="reserv">
+                <h1 class="h3 mt-3 mb-4">Reservations</h1>
+            </header>
+            {{ form_start(form) }}
+
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-light">
+                            {{ form_label(form.name) }}
+                        </div>
+                        {{ form_widget(form.name) }}
+                        <div class="form-error">
+                            {{ form_errors(form.name) }}
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-light">
+                            {{ form_label(form.date) }}
+                        </div>
+                        {{ form_widget(form.date) }}
+                        <div class="form-error">
+                            {{ form_errors(form.date) }}
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-center text-light">
+                            {{ form_label(form.hour) }}
+                        </div>
+                        {{ form_widget(form.hour) }}
+                        <div class="form-error">
+                            {{ form_errors(form.hour) }}
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-light">
+                            {{ form_label(form.numberCover) }}
+                        </div>
+                        {{ form_widget(form.numberCover) }}
+                        <div class="form-error">
+                            {{ form_errors(form.numberCover) }}
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-light">
+                            {{ form_label(form.allergie) }}
+                        </div>
+                        {{ form_widget(form.allergie) }}
+                        <div class="form-error">
+                            {{ form_errors(form.allergie) }}
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 mb-5 wrapper-btn">
+                        <button type="submit" class="btn-custom">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+            </form>     
+    {{ form_end(form) }}
+        </div>
+    </main>
+<!-- Reservations Section End -->
+    {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+{% endblock %}

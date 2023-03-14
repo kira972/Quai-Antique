@@ -34,18 +34,14 @@ class AppFixtures extends Fixture
             $user = New User();
             $user->setFirstName($faker->firstname())
                 ->setLastName($faker->lastname())
-                ->setEmail($faker->unique()->email());
+                ->setEmail($faker->unique()->email())
+                ->setPassword($this->passwordHasher->hashPassword($user,'password'));
             if($i<2) {
                 $user->setRoles(['ROLE_ADMIN']);
             } else {
-                $user->setRoles(['ROLE_MEMBER']);
+                $user->setRoles(['ROLE_MEMBER'])
+                    ->setDefaultNumberCover(mt_rand(1,10));
             }
-
-
-    // $user
-            $plaintextPassword = 'password';
-            $hashedPassword = $this->passwordHasher->hashPassword($user,$plaintextPassword);
-            $user->setPassword($hashedPassword);
 
             if ($i>1) {
                 $membres[] = $user;
@@ -54,10 +50,11 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-    //Allergies
+    //Allergie
+    $allergiesName = ['Oeuf', 'Lait', 'Gluten', 'Moutarde', 'Arachide', 'Poissons', 'Soja', 'Sulfites', 'Fruits à coque', 'Céleri'];
         for ($j=0; $j < 10; $j++) { 
             $allergie = new Allergie();
-            $allergie->setDescription($faker->word(3))
+            $allergie->setDescription($allergiesName[$j])
                 ->addUser($faker->unique()->randomElement($membres));
             $allergies[] = $allergie; 
             $manager->persist($allergie);
@@ -65,13 +62,13 @@ class AppFixtures extends Fixture
 
     //Restaurant
     $restaurant = New Restaurant();
-    $restaurant->setName($faker->name())
-        ->setPhoneNumber($faker->phoneNumber())
-        ->setMail($faker->email())
-        ->setAddress($faker->address())
-        ->setCity($faker->city())
-        ->setPostcode($faker->postcode());
-
+    $restaurant->setName('Quai Antique')
+        ->setPhoneNumber('0596523023')
+        ->setMail('QuaiAntique@resto.fr')
+        ->setAddress('27, rue du Paradis')
+        ->setPostcode('44000')
+        ->setCity('Nantes');
+        
     $manager->persist($restaurant);
 
 
@@ -82,12 +79,11 @@ class AppFixtures extends Fixture
         $hours = ['1200', '1230', '1300', '1330', '1400', '1900', '1930', '2000', '2030', '2100', '2130'];
 
         $reservation = New Reservation();
-        $reservation->setAllergie($faker->word())
-            ->setUser($faker->unique()->randomElement($membres))
+        $reservation->setUser($faker->unique()->randomElement($membres))
             ->setRestaurant($restaurant)
             ->setDate($date)
             ->setHour(new \Datetime($faker->randomElement($hours)))
-            ->setNumberCover(mt_rand(1, 6))
+            ->setNumberCover(mt_rand(1, 10))
             ->setName($faker->word());
 
         for ($s=0; $s < mt_rand(0, 3); $s++) { 
@@ -158,6 +154,7 @@ class AppFixtures extends Fixture
     }
 
     //Picture
+    // tABLEAU D'images / chgt longueur du for / $filenameArr[$q]
     for ($q=0; $q < 6; $q++) { 
         $picture = New Picture();
         $picture->setName($faker->word())
