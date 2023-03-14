@@ -4,9 +4,9 @@
             <div class="section-header">
                 <h2 class="mb-4">Contacter nous</h2>
             </div> 
-{{dump(openingTimes)}}
+            
             <div class="row contact-detail">
-                <div class="col-md-6">
+                <div class="col-md-6 p-0">
                     <div class="contact-col-1">
                         <div class="contact-hours">
                             <h3 class="mb-3">Horaires d'ouverture</h3>
@@ -21,14 +21,14 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 p-0">
                     <div class="contact-col-2">
                         <div class="contact-info">
                             <h3 class="mb-3">Contactez-nous</h3>
-                            <p>27, rue du Paradis</p>
-                            <p>44000 Nantes</p>
-                            <p><a href=" 05 96 52 30 23"></a> 05 96 52 30 23</p>
-                            <p><a href="Quai Antique@resto.fr">QuaiAntique@resto.fr</a></p>
+                            <p>{{restaurant.address}}</p>
+                            <p>{{restaurant.postCode}} {{restaurant.city}}</p>
+                            <p>Tel: {{restaurant.phoneNumber}}</p>
+                            <p><a href="Quai Antique@resto.fr">{{restaurant.mail}}</a></p>
                         </div>
                     </div>
                 </div>

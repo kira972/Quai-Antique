@@ -54,6 +54,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
     private Collection $reservations;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $defaultNumberCover = null;
+
     public function __construct()
     {
         $this->allergie = new ArrayCollection();
@@ -224,6 +227,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $reservation->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->lastname;
+    }
+
+    public function getDefaultNumberCover(): ?int
+    {
+        return $this->defaultNumberCover;
+    }
+
+    public function setDefaultNumberCover(?int $defaultNumberCover): self
+    {
+        $this->defaultNumberCover = $defaultNumberCover;
 
         return $this;
     }

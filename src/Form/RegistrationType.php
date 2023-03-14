@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Allergie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,6 +30,9 @@ class RegistrationType extends AbstractType
             'label_attr' => [
                 'class' => 'form-label mt-4'
             ],
+            // 'label_attr' => [
+            //     'class' => 'form-label mt-4'
+            // ],
             'constraints' => [
                 new Assert\NotBlank(),
                 new Assert\Length(['min' => 2, 'max' => 50])
@@ -75,42 +80,74 @@ class RegistrationType extends AbstractType
                     ],
                     'label' => 'Mot de passe',
                     'label_attr' => [
-                        'class' => 'form-label mt-4 '
+                        'class' => 'mt-4 '
                     ]
                 ],
                 'second_options' => [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
                     ],
                     'label' => 'Confirmation du mot de passe',
                     'label_attr' => [
-                        'class' => 'form-control'
+                        'class' => 'mt-4 mb-2'
                     ]
                     ],
                 'invalid_message' => 'Les mots de passe ne correspondent pas.'
             ])
 
-            ->add('allergie', TextType::class,[
+            // ->add('allergie', TextType::class,[
+            //     'attr' => [
+            //         'class' => 'form-control',
+            //         'minlenght' => '5',
+            //         'maxlenght' => '100',
+            //     ],
+            //     'required' => false,
+            //     'label' => 'Vos Allergie (Facultatif) ',
+            //     'label_attr' => [
+            //         'class' => 'form-label mt-4'
+            //     ],
+            //     'constraints' => [
+            //         new Assert\Length(['min' => 3, 'max' => 100])
+            //     ]
+            // ])
+            ->add('allergie', EntityType::class, [
+                'class' => Allergie::class,
+                // 'choice_label' => function ($allergie) {
+                //     return $allergie->getDescription();
+                // }
                 'attr' => [
-                    'class' => 'form-control',
-                    'minlenght' => '5',
-                    'maxlenght' => '100',
+                    'class' => 'checkbox-inputs'
                 ],
                 'required' => false,
-                'label' => 'Vos Allergie (Facultatif) ',
+                'choice_label' => "description" ,
+                "mapped" => false,
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Précisez vos allergies',
                 'label_attr' => [
-                    'class' => 'form-label mt-4'
-                ],
-                'constraints' => [
-                    new Assert\Length(['min' => 3, 'max' => 100])
+                    'class' => 'mt-4 mb-2'
                 ]
-            ])
-
-            ->add('submit', SubmitType::class, [
+                ])
+            ->add('defaultNumberCover', IntegerType::class, [
+                'label' => 'Couvert',
+                'constraints' => [
+                    new Assert\Range([
+                        'min' => 1, 
+                        'max' => 10,
+                        'notInRangeMessage' => 'Le nombre de couvert doit être compris entre {{ min }} et {{ max }}',
+                    ])
+                ],
                 'attr' => [
-                    'class' => 'btn btn-primary mt-4'
+                    'min' => 1,
+                    'max' => 10
                 ]
             ]);
+                
+            // ->add('submit', SubmitType::class, [
+            //     'attr' => [
+            //         'class' => 'btn btn-primary mt-4'
+            //     ]
+            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

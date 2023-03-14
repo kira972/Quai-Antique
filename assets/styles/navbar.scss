@@ -138,22 +138,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
-/// ABB
-///
-///     --bs-navbar-active-color: issue color
 nav {
     position: relative;
     z-index: 10;
     background: #bc9b5d;
-    //   height: 70px;
     text-align: center;
-    //   border-bottom: 5px solid #353535;
     -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
 }
 
 nav .nav-link {
-  //font-family: "Nunito", sans-serif;
   padding: 18px 15px 20px 15px;
   text-decoration: none;
   display: inline-block;
@@ -172,8 +166,6 @@ nav .nav-link.active {
 }
 
 nav .navbar-nav {
-  //   margin: 0;
-
   .nav-item:hover {
     color: #fff;
     background: #bc9b5d;

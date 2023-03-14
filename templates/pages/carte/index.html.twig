@@ -5,68 +5,74 @@
 {% block body %}
 
 
+  <main class="container page-menu my-5">
+    <h1 class="mb-5">~ La carte du restaurant ~</h1>
+    
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="{{asset("build/images/entrées.jpg")}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title mt-3">~ Carte Entrées ~</h3>
+          <h4 class="mb-4">Notre sélection d'entrées</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h6 class="mt-3">L’enchiladas</h6><p class="text-center"> Cette spécialité est une crêpe garnie de viande de bœuf de poulet mijotée dans une sauce au piment (chile) avec tomates et oignons.</p><p class="text-center fw-bold mt-3">12 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Les tamales</h6><p class="text-center"> Cette spécialité est à base de pâte de maïs farcie de viande et de légumes se présente comme une papillote enveloppée dans une feuille de bananier, de maïs.</p><p class=" text-center fw-bold mt-3">12 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Les chilaquiles</h6><p class="text-center"> cette spécialitée est comosée de chips de tortillas frits avec des oignons, du fromage râpé, des viandes, des légumes, un œuf, du chile rouge et de la crème fraîche, le tout parsemé de fromage.</p><p class="text-center fw-bold mt-3">12 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Les tostadas</h6><p class="text-center"> Cette spécialité est garnit généreusement de poulet, de tomates, de chorizo, d’épices, de haricots noirs, de salade et de fromage. On l’accompagne avec du guacamole.</p><p class="text-center fw-bold mt-3">12 €</p></li>
+            </ul>
+        </div>
+        </div>
+      </div>
 
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3 class="card-title">~ Carte Entrées ~</h3>
-        <h4>Notre sélection d'entrées</h4>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h6>L’enchiladas</h6> Cette spécialité est une crêpe garnie de viande de bœuf de poulet ou de fromage mijotée dans une sauce au piment (chile) avec tomates et oignons.<br>12 €</li>
-    <li class="list-group-item"><h6>Les tamales</h6> Cette spécialité est à base de pâte de maïs farcie de viande et de légumes se présente comme une papillote enveloppée dans une feuille de bananier, de maïs.<br>12 €</li>
-    <li class="list-group-item"><h6>Les chilaquiles</h6> cette spécialitée est comosée de chips de tortillas frits avec des oignons, du fromage râpé, des viandes, des légumes, un œuf, du chile rouge et de la crème fraîche, le tout parsemé de fromage.<br>12 €</li>
-    <li class="list-group-item"><h6>Les tostadas</h6> Cette spécialité est garnit généreusement de poulet, de tomates, de chorizo, d’épices, de haricots noirs, de salade et de fromage. On l’accompagne avec du guacamole.<br>12 €</li>
-  </ul>
+      <div class="col">
+        <div class="card">
+          <img src="{{asset("build/images/viandes.jpg")}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title mt-3">~ Carte Viandes ~</h3>
+          <h4>Notre sélection de viandes</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h6 class="mt-3">Chili con carne</h6><p class="text-center"> Cette spécialité est à base de viande hachée , tomates pelés, haricots rouges, poivrons.</p><p class="text-center fw-bold mt-3">25 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Fajitas mexicains</h6><p class="text-center"> Cette spécialité est composée d'escalope de dinde, sauce salsa, poivrons, cheddar, citron vert.</p><p class="text-center fw-bold mt-3">25 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Burrito mexicain</h6><p class="text-center"> Cette spécialité est une Tortillas de blé agrémenter de viandes hachée, haricots rouges, oignon, ail, tomates, cheddar et ses épices.</p><p class="text-center fw-bold mt-3">25 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Boeuf mijoté</h6><p class="text-center"> Cette spécialité est à base de viande de boeuf braiser, haricots rouges, pommes de terre, tomates, poivrons, oignos et ses épices.</p><p class="text-center fw-bold mt-3">25 €</p></li>
+            </ul>
+        </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3 class="card-title">~ Carte Viandes ~</h3>
-        <h4>Notre sélection de viandes.</h4>
-          <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h6>Chili con carne</h6> Cette spécialité est à base de viande hachée , tomates pelés, haricots rouges, poivrons.<br>25 €</li>
-    <li class="list-group-item"><h6>Fajitas mexicains</h6> Cette spécialité est composée d'escalope de dinde, sauce salsa, poivrons, cheddar, citron vert.<br>25 €</li>
-    <li class="list-group-item"><h6>Burrito mexicain</h6> Cette spécialité est une Tortillas de blé agrémenter de viandes hachée, haricots rouges, oignon, ail, tomates, cheddar et ses épices.<br>25 €</li>
-    <li class="list-group-item"><h6>Boeuf mijoté</h6> Cette spécialité est à base de viande de boeuf braiser, haricots rouges, pommes de terre, tomates, poivrons, oignos et ses épices.<br>25 €</li>
-  </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3 class="card-title">~ Carte Poissons ~</h3>
-        <h4>Notre sélection de poissons.</h4>
-          <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h6>Poisson à la mexicaine</h6> Cette spécialité est à base de cabillaud, avocat, oranges, poivrons, oignon, ail et ses épices.<br>27 €</li>
-    <li class="list-group-item"><h6>Ceviche</h6> Cette spécialité est à base de cabillaud, tomates, avocat, olives, citron, coriandre, origan, oignons.<br>27 €</li>
-    <li class="list-group-item"><h6>Huachinango a la Veracruzana</h6> Cette spécialité est composée de vivaneau rouge, ctitron vert, noix de muscade, oignon, ail, poivrons, piments de jalapenos, vin blanc, raisin sec et ses épices.<br>35 €</li>
-    <li class="list-group-item"><h6>Filet de daurade à la mexicaine</h6> Cette spécialité est composée de filets de daurade, citron vert, piment rouge, olives vertes, tomates séchée. <br>35 €</li>
-  </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3 class="card-title">~ Carte Desserts ~</h3>
-        <h4>Notre sélection de desserts.</h4>
-          <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h6>Flan au caramel crémeux</h6> Cette spécialité est composée de lait concentré, d’œufs et de caramel.<br>15 €</li>
-    <li class="list-group-item"><h6>Churros mexicains</h6> Cette spécialité à base de farine et de sucre et accompagné d'un chocolat chaud.<br>15 €</li>
-    <li class="list-group-item"><h6>Pastel de Tres Leches</h6> Cette spécialité est une génoise humidifiée avec un mélange de trois types de lait différents : lait en poudre, crème et lait concentré.<br>15 €</li>
-    <li class="list-group-item"><h6>Pan de elote</h6> Cette spécialité est composée de petits pains trempés dans un peu de sirop de piloncillo, noix,raisins secs et graines.<br>15 €</li>
-  </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
+      <div class="col">
+        <div class="card">
+          <img src="{{asset("build/images/poisson1.jpeg")}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h3 class="card-title mt-3">~ Carte Poissons ~</h3>
+          <h4>Notre sélection de poissons</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h6 class="mt-3">Poisson à la mexicaine</h6><p class="text-center"> Cette spécialité est à base de cabillaud, avocat, oranges, poivrons, oignon, ail et ses épices.<p class="text-center fw-bold mt-3">27 €</p></p></li>
+              <li class="list-group-item"><h6 class="mt-3">Ceviche</h6><p class="text-center"> Cette spécialité est à base de cabillaud, tomates, avocat, olives, citron, coriandre, origan, oignons.</p><p class="text-center fw-bold mt-3">27 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Huachinango a la Veracruzana</h6><p class="text-center"> Cette spécialité est composée de vivaneau rouge, ctitron vert, noix de muscade, oignon, ail, poivrons, piments de jalapenos, vin blanc, raisin sec et ses épices.</p><p class="text-center fw-bold">35 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Filet de daurade à la mexicaine</h6><p class="text-center"> Cette spécialité est composée de filets de daurade, citron vert, piment rouge, olives vertes, tomates séchée. </p><p class="text-center fw-bold mt-3">35 €</p></li>
+            </ul>
+        </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="{{asset("build/images/horchata.jpg")}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h3 class="card-title mt-3">~ Carte Desserts ~</h3>
+          <h4>Notre sélection de desserts</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h6 class="mt-3">Flan au caramel crémeux</h6><p class="text-center"> Cette spécialité est composée de lait concentré, d’œufs et de caramel.</p><p class="text-center fw-bold mt-3">15 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Churros mexicains</h6><p class="text-center"> Cette spécialité à base de farine et de sucre et accompagné d'un chocolat chaud.</p><p class="text-center fw-bold mt-3">15 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Pastel de Tres Leches</h6><p class="text-center"> Cette spécialité est une génoise humidifiée avec un mélange de trois types de lait différents : lait en poudre, crème et lait concentré.</p><p class="text-center fw-bold mt-3">15 €</p></li>
+              <li class="list-group-item"><h6 class="mt-3">Pan de elote</h6> <p class="text-center">Cette spécialité est composée de petits pains trempés dans un peu de sirop de piloncillo, noix,raisins secs et graines.</p><p class="text-center fw-bold mt-3">15 €</p></li>
+            </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
 {% endblock %}

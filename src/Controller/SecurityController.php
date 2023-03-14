@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -47,16 +48,31 @@ class SecurityController extends AbstractController
  * @param EntityManagerInterface $manager
  * @return Response
  */
-    public function registration(Request $request, EntityManagerInterface $manager): Response
+    public function registration(
+        Request $request,
+        EntityManagerInterface $manager,
+        UserPasswordHasherInterface $passwordHasher
+        ): Response
     {
 
         $user = new User();
-        $user->setRoles(['ROLE_USER']);
+        //$user->setRoles(['ROLE_USER']);
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+            $allergies = $form->get('allergie')->getData();
+            $plainPassword = $form->get('plainPassword')->getData();
+            // dd($allergies);
+
+            foreach ($allergies as $allergie) {
+                $user->addAllergie($allergie);
+            }
+
+            $user->setRoles(['ROLE_MEMBER']);
+
+            $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
 
             $this->addFlash(
                 'success',
