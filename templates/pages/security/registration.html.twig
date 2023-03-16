@@ -5,48 +5,55 @@
 {% endblock %}
 
 {% block body %}
+<main class="registration-page">
     <div class="container">
-        <h1 class="mt-4">Formulaire d'inscription</h1>
+        <h1 class="mt-5">Formulaire d'inscription</h1>
             {{ form_start(form) }}
-        <div class="register-form">
+        <div class="register-form mt-4">
             <div class="my-custom-class-for-errors">
                 {{ form_errors(form) }}
             </div>
 
             <div class="row mb-5">
                 <div class="col-12">
-                    {{ form_row(form.firstname) }}
+                    {{ form_label(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
                 </div>
                 <div class="col-12">
-                    {{ form_row(form.lastname) }}
+                    {{ form_label(form.lastname) }}
+                    {{ form_widget(form.lastname) }}
                 </div>
                 <div class="col-12">
-                    {{ form_row(form.email) }}
-                </div>
-                <div class="col-12">
-                    {{ form_row(form.plainPassword) }}
-                </div>
-                {# <div class="col-12">
-                    {{ form_row(form.allergie) }}
-                </div> #}
-
-                <div class="col-12">
-                    {{ form_label(form.allergie) }}
-
-                    {{ form_widget(form.allergie) }}
-
-                    <div class="form-error">
-                        {{ form_errors(form.allergie) }}
-                    </div>
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
                 </div>
 
                 <div class="col-12">
                     {{ form_label(form.defaultNumberCover) }}
-
                     {{ form_widget(form.defaultNumberCover) }}
 
                     <div class="form-error">
                         {{ form_errors(form.defaultNumberCover) }}
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    {# {{ form_label(form.plainPassword.first) }} #}
+                    <label for="registration_plainPassword_first" class="form-label mt-4">Mot de passe</label>
+                    {{ form_widget(form.plainPassword.first) }}
+                    <div class="form-error">
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+
+                    <label for="registration_plainPassword_second" class="form-label mt-4">Confirmation mot de passe</label>
+                    {{ form_widget(form.plainPassword.second) }}
+                </div>
+                <div class="col-12">
+                    <label class="form-label mt-4">Précisez vos allergies</label>
+                    {{ form_widget(form.allergie) }}
+
+                    <div class="form-error">
+                        {{ form_errors(form.allergie) }}
                     </div>
                 </div>
 
@@ -57,6 +64,40 @@
                 </div>
             </div>
         </div>
-            {{ form_end(form) }}
+    {{ form_end(form) }}
+</main>
+{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }} 
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    {{ encore_entry_script_tags('modal-remise') }}
 {% endblock %}

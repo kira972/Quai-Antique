@@ -21,7 +21,7 @@ a:active,
 a:focus {
   color: #353535;
   outline: none;
-  text-decoration: none;
+  //text-decoration: none;
 }
 
 p {
@@ -75,28 +75,4 @@ h1, h2, h3, h4, h5, h6{
     background: #353535;
   }
 
-.back-to-top {
-  position: fixed;
-  display: none;
-  background-color: #bc9b5d;
-  color: #353535;
-  width: 44px;
-  height: 44px;
-  text-align: center;
-  line-height: 1;
-  font-size: 18px;
-  border-radius: 50%;
-  right: 15px;
-  bottom: 15px;
-  transition: background-color 0.5s;
-  z-index: 11;
-}
 
-.back-to-top:hover {
-  color: #bc9b5d;
-  background: #353535;
-}
-
-.back-to-top i {
-  padding-top: 10px;
-}

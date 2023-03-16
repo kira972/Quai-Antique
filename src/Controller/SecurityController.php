@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\OpeningTimeRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SecurityController extends AbstractController
 {
@@ -21,9 +23,17 @@ class SecurityController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils ): Response
+    public function login(AuthenticationUtils $authenticationUtils,
+    OpeningTimeRepository $openingTimeRepository,
+    RestaurantRepository $restaurantRepository,
+    ): Response
     {
+        $openingTimes = $openingTimeRepository->findAll();
+        $restaurant = $restaurantRepository->findOneBy(['name' => 'Quai Antique']);
+
         return $this->render('pages/security/login.html.twig', [
+            'openingTimes' => $openingTimes,
+            'restaurant' => $restaurant,
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError()
         ]);
@@ -48,15 +58,19 @@ class SecurityController extends AbstractController
  * @param EntityManagerInterface $manager
  * @return Response
  */
+
     public function registration(
         Request $request,
         EntityManagerInterface $manager,
-        UserPasswordHasherInterface $passwordHasher
+        UserPasswordHasherInterface $passwordHasher,
+        OpeningTimeRepository $openingTimeRepository,
+        RestaurantRepository $restaurantRepository,
         ): Response
     {
+        $openingTimes = $openingTimeRepository->findAll();
+        $restaurant = $restaurantRepository->findOneBy(['name' => 'Quai Antique']);
 
         $user = new User();
-        //$user->setRoles(['ROLE_USER']);
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
@@ -64,7 +78,6 @@ class SecurityController extends AbstractController
             $user = $form->getData();
             $allergies = $form->get('allergie')->getData();
             $plainPassword = $form->get('plainPassword')->getData();
-            // dd($allergies);
 
             foreach ($allergies as $allergie) {
                 $user->addAllergie($allergie);
@@ -86,7 +99,9 @@ class SecurityController extends AbstractController
         }
 
         return $this-> render('pages/security/registration.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'openingTimes' => $openingTimes,
+            'restaurant' => $restaurant,
         ]);
     }
 }

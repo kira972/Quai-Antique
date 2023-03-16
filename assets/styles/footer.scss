@@ -3,94 +3,83 @@
 /* ================================================= */
 
 #footer {
-    position: relative;
-    background: #353535;
-    padding: 30px 0;
+  position: relative;
+  background: #353535;
+  padding: 30px 0;
 }
 
 #footer .col-sm-6 {
-    border-right: 1px dotted #bc9b5d;
+  border-right: none;
 }
 
 #footer .col-sm-6:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 #footer .copyright {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 300;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#footer .copyright p {
+  color: #bc9b5d;
+  margin-bottom: 10px;
+}
+
+#footer .copyright p:last-child {
+  margin-bottom: 0;
+}
+
+#footer .copyright a {
+  color: #ddd;
+  font-weight: 600;
+}
+
+#footer .copyright a:hover {
+  color: #bc9b5d;
+}
+
+#footer .icon {
+  position: relative;
+  margin: 0 0 15px 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#footer .icon li {
+  display: inline-block;
+}
+
+#footer .icon li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  padding: 12px 13px;
+  border-radius: 20px;
+  color: #353535;
+  background: #bc9b5d;
+}
+
+#footer .icon li a:hover {
+  color: #bc9b5d;
+  background: #ffffff;
+}
+
+@media screen and (min-width: 575.98px) {
+  #footer .col-sm-6 {
+    border-right: 1px dotted #bc9b5d;
+  }
+  #footer .copyright {
     text-align: left;
     position: relative;
     top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-}
-
-@media (max-width: 575.98px) {
-    #footer .col-sm-6 {
-        border-right: none;
-    }
-
-    #footer .copyright {
-        margin-bottom: 30px;
-    }
-}
-
-    #footer .copyright p {
-        color: #bc9b5d;
-        margin-bottom: 10px;
-}
-
-    #footer .copyright p:last-child {
-        margin-bottom: 0;
-}
-
-    #footer .copyright a {
-        color: #ddd;
-        font-weight: 600;
-}
-
-    #footer .copyright a:hover {
-        color: #bc9b5d;
-}
-
-    #footer .icon {
-        margin: 0 0 15px 0;
-        padding: 0;
-        list-style-type: none;
-        text-align: right;
-        position: relative;
-        top: 50%;
-        -moz-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-}
-
-    #footer .icon li {
-        display: inline-block;
-}
-
-    #footer .icon li a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        margin-right: 8px;
-        padding: 12px 13px;
-        border-radius: 20px;
-        color: #353535;
-        background: #bc9b5d;
-}
-
-    #footer .icon li a:hover {
-        color: #bc9b5d;
-        background: #ffffff;
-}
-
-    @media (max-width: 575.98px) {
-        #footer .copyright,
-        #footer .icon {
-            text-align: center;
-    }
+  }
+  #footer .icon {
+    text-align: right;
+  }
 }

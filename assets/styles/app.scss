@@ -6,9 +6,12 @@
 @import "footer.scss";
 @import "topHeader.scss";
 @import "img-home.scss";
+
+@import "components/form.scss";
+
 @import "pages/login-page.scss";
 @import "pages/menu-page.scss";
 @import "pages/registration-page.scss";
-@import "components/form.scss";
-@import "pages/reservation.scss";
+@import "pages/reservation-page.scss";
+
 @import "~bootstrap/scss/bootstrap";

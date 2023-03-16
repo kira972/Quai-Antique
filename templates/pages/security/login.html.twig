@@ -36,48 +36,11 @@
                     Se connecter
                 </button>
             </div>
+
+            <a class="link-inscription" href="{{ path('security.registration') }}">inscription</a>
         </form>
     </div>
-    </main>
-<a href="{{ path('security.registration') }}">veuillez vous inscrire ici </a>
-
-
-        <!-- Contact Section Start -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="mb-4">Contacter nous</h2>
-                </div>
-
-                <div class="row contact-detail">
-                    <div class="col-md-6">
-                        <div class="contact-col-1">
-                            <div class="contact-hours">
-                                <h3>Horaires d'ouverture</h3>
-                                <p>Lundi : 12h-14h / 19h-22h</p>
-                                <p>Mardi : 12h-14h / 19h-22h</p>
-                                <p>Mercredi : 12h-14h / 19h-22h</p>
-                                <p>Jeudi : 12h-14h / 19h-22h</p>
-                                <p>Vendredi : 12h-14h / 19h-22h</p>
-                                <p>Samedi : 12h-14h / 19h-22h</p>
-                                <p>Dimanche : Fermé</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <div class="contact-col-2">
-                            <div class="contact-info">
-                                <h3>Contactez-nous</h3>
-                                <p>27, rue du Paradis</p>
-                                <p>44000 Nantes</p>
-                                <p><a href=" 05 96 52 30 23"></a> 05 96 52 30 23</p>
-                                <p><a href="Quai Antique@resto.fr">Quai Antique@resto.fr</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-        </section>
-        <!-- Login Section End -->
+</main>
+{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+<!-- Login Section End -->
 {% endblock %}

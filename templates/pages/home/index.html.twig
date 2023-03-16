@@ -12,13 +12,13 @@
                 {{ message }}
                 </div>
             {% endfor %}
-            {# {{ dump(picturesIsFavorite) }} #}
+
             <h1>Bienvenue au Quai Antique</h1>
             <p>Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes.<br>Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
         </div>
     </div>
     <!-- Welcome Section End -->
-    <!-- Menu Section Start -->
+    <!-- Picture Section Start -->
     <section id="food-menu">
         <div class="container">
             <header class="section-header">
@@ -29,11 +29,7 @@
                 {% for pictureIsFavorite in picturesIsFavorite %}
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="single-menu">
-                            {# <pre>
-                                {{ dump(pictureIsFavorite) }}
-                            </pre> #}
                         <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.filename)}}" /> 
-                        {# <img class="img-fluid" src="{{asset("build/images/burritos.jpg")}}"/> #}
                         <div class="content">
                             <div class="text">{{pictureIsFavorite.name}}</div>
                         </div>
@@ -41,75 +37,13 @@
                 </div>
                 {% endfor %}
             </div>
-                {# <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/ceviche.jpg")}}"/>
-                        <div class="content">
-                            <div class="text">Ceviche</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/enchilada.jpg")}}" />
-                        <div class="content">
-                            <div class="text">Enchiladas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/pozole.jpg")}}" />
-                        <div class="content">
-                            <div class="text">Pozole</div>
-                        </div>
-                    </div>
-                </div>
-
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/chilaquiles.jpg")}}" />
-                        <div class="content">
-                            <div class="text">Chilaquiles</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/quesadillas.jpg")}}" />
-                        {# {% <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.name)}}" /> %} #}
-                        {# <div class="content">
-                            <div class="text">Quesasillas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/tostadas.jpg")}}" />
-                        <div class="content">
-                            <div class="text">Tostadas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/tacos.jpg")}}" />
-                        <div class="content">
-                            <div class="text">Tacos</div>
-                        </div>
-                    </div>
-                </div>#}
+    <!-- Picture Section End-->
             <div id="welcome">                
                 <a href="{{ path("app_reservation") }}">Réserver</a>
             </div>
             
         </div>
     </section>
-    <!-- Menu Section End-->
-    {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+
+{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
 {% endblock %}

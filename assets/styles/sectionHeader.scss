@@ -2,26 +2,6 @@
 /* ---------------- Section Header ----------------- */
 /* ================================================= */
 
-// @media (max-width: 767.98px) {
-//   .section-header h2 {
-//     font-size: 38px;
-//   }
-
-//   .section-header h2::before {
-//     height: 6px;
-//   }
-// }
-
-// @media (max-width: 575.98px) {
-//   .section-header h2 {
-//     font-size: 32px;
-//   }
-
-//   .section-header h2::before {
-//     height: 5px;
-//   }
-// }
-
 #welcome {
   position: relative;
   padding: 45px 0 45px 0;
@@ -40,29 +20,6 @@
   margin-inline: auto;
   margin-top: 2.5rem;
   color: #353535;
-}
-
-@media screen and (max-width: 767.98px) {
-  //   #welcome h2 {
-  //     font-size: 40px;
-  //   }
-
-  //   #welcome p {
-  //     font-size: 18px;
-  //     line-height: 28px;
-  //   }
-}
-
-@media screen and (max-width: 575.98px) {
-  //   #welcome h2 {
-  //     font-size: 30px;
-  //     letter-spacing: 0;
-  //   }
-
-  //   #welcome p {
-  //     font-size: 16px;
-  //     // line-height: 26px;
-  //   }
 }
 
 #welcome a {

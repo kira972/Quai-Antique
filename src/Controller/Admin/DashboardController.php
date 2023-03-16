@@ -2,45 +2,93 @@
 
 namespace App\Controller\Admin;
 
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+
+
+use App\Entity\User;
+use App\Entity\Picture;
+use App\Entity\Restaurant;
+use App\Entity\OpeningTime;
+use App\Entity\Reservation;
+use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
+use App\Controller\Admin\PictureCrudController;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use App\Controller\Admin\RestaurantCrudController;
+use App\Controller\Admin\OpeningTimeCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+
 
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(
+        private AdminUrlGenerator $adminUrlGenerator
+    ){
+        
+    }
+
     #[Route('/admin', name: 'admin')]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
-        return parent::index();
+        $url = $this->adminUrlGenerator
+        ->setcontroller(OpeningTimeCrudController::class)
+        ->setcontroller(ReservationTimeCrudController::class)
+        ->setcontroller(UserCrudController::class)
+        ->setcontroller(RestaurantCrudController::class)
+        ->setcontroller(PictureCrudController::class)
 
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
 
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirect('...');
-        // }
 
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        // return $this->render('some/path/my-dashboard.html.twig');
+
+        ->generateUrl();
+
+        return $this->redirect($url);
+
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Quai Antique');
+            ->setTitle('Quai Antique - Administration')
+            ->renderContentMaximized();
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
-    }
+        yield MenuItem::subMenu('Horaire d\'ouverture', 'fa-sharp fa-solid fa-clock')->setSubItems([
+            MenuItem::linkToCrud('create Horaire d\'ouverture', 'fas fa-plus', OpeningTime::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Horaire d\'ouverture', 'fas fa-eye', OpeningTime::class)
+        ]);
+
+        yield MenuItem::subMenu('Réservation', 'fa-solid fa-book')->setSubItems([
+            MenuItem::linkToCrud('create Réservation', 'fas fa-plus', Reservation::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Réservations', 'fas fa-eye', Reservation::class),
+        ]);
+
+        yield MenuItem::subMenu('Utilisateurs', 'fa-solid fa-users')->setSubItems([
+            MenuItem::linkToCrud('create Utilisateur', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Utilisateurs', 'fas fa-eye', User::class),
+        ]);
+
+        yield MenuItem::subMenu('Coordonnées restaurant', 'fa-solid fa-phone')->setSubItems([
+            MenuItem::linkToCrud('create Coordonnée Restaurant', 'fas fa-plus', Restaurant::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Coordonnées Restaurant', 'fas fa-eye', Restaurant::class),
+        ]);
+
+        yield MenuItem::subMenu('Photos plats', 'fa-solid fa-image')->setSubItems([
+            MenuItem::linkToCrud('create Image', 'fas fa-plus', Picture::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Images', 'fas fa-eye', Picture::class),
+
+        ]);
+    }  
 }
+
+
+
+
+

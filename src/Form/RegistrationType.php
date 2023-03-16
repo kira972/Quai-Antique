@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -28,11 +29,8 @@ class RegistrationType extends AbstractType
             ],
             'label' => 'Nom',
             'label_attr' => [
-                'class' => 'form-label mt-4'
+                'class' => 'form-label mt-3'
             ],
-            // 'label_attr' => [
-            //     'class' => 'form-label mt-4'
-            // ],
             'constraints' => [
                 new Assert\NotBlank(),
                 new Assert\Length(['min' => 2, 'max' => 50])
@@ -47,7 +45,7 @@ class RegistrationType extends AbstractType
             ],
             'label' => 'Prénom',
             'label_attr' => [
-                'class' => 'form-label mt-4'
+                'class' => 'form-label'
             ],
             'constraints' => [
                 new Assert\NotBlank(),
@@ -61,9 +59,9 @@ class RegistrationType extends AbstractType
                 'minlenght' => '2',
                 'maxlenght' => '180',
             ],
-            'label' => 'Adresse email',
+            'label' => 'Email',
             'label_attr' => [
-                'class' => 'form-label mt-4'
+                'class' => 'form-label mt-3'
             ],
             'constraints' => [
                 new Assert\NotBlank(),
@@ -76,45 +74,33 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => [
-                        'class' => 'form-control mt-4 '
+                        'class' => 'form-control col-12'
                     ],
-                    'label' => 'Mot de passe',
+                    'label' => false,
                     'label_attr' => [
-                        'class' => 'mt-4 '
+                        'class' => 'col-12 mt-3'
                     ]
                 ],
                 'second_options' => [
                     'attr' => [
                         'class' => 'form-control',
                     ],
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => false,
                     'label_attr' => [
-                        'class' => 'mt-4 mb-2'
+                        'class' => 'col-12 mt-3'
                     ]
-                    ],
-                'invalid_message' => 'Les mots de passe ne correspondent pas.'
+                ],
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Regex([
+                        'pattern'=> '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+                        'message' => 'Le mot de passe doit contenir minimum 8 caractères, au moins 1 lettre majuscule, 1 lettre minuscule, 1 chiffre et 1 caractère spécial'
+                    ])
+                ],
             ])
-
-            // ->add('allergie', TextType::class,[
-            //     'attr' => [
-            //         'class' => 'form-control',
-            //         'minlenght' => '5',
-            //         'maxlenght' => '100',
-            //     ],
-            //     'required' => false,
-            //     'label' => 'Vos Allergie (Facultatif) ',
-            //     'label_attr' => [
-            //         'class' => 'form-label mt-4'
-            //     ],
-            //     'constraints' => [
-            //         new Assert\Length(['min' => 3, 'max' => 100])
-            //     ]
-            // ])
             ->add('allergie', EntityType::class, [
                 'class' => Allergie::class,
-                // 'choice_label' => function ($allergie) {
-                //     return $allergie->getDescription();
-                // }
                 'attr' => [
                     'class' => 'checkbox-inputs'
                 ],
@@ -123,13 +109,13 @@ class RegistrationType extends AbstractType
                 "mapped" => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Précisez vos allergies',
-                'label_attr' => [
-                    'class' => 'mt-4 mb-2'
-                ]
+                'label' => false,
                 ])
             ->add('defaultNumberCover', IntegerType::class, [
                 'label' => 'Couvert',
+                'label_attr' => [
+                    'class' => 'col-12 mt-3'
+                ],
                 'constraints' => [
                     new Assert\Range([
                         'min' => 1, 
@@ -142,12 +128,6 @@ class RegistrationType extends AbstractType
                     'max' => 10
                 ]
             ]);
-                
-            // ->add('submit', SubmitType::class, [
-            //     'attr' => [
-            //         'class' => 'btn btn-primary mt-4'
-            //     ]
-            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

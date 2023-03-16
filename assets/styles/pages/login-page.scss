@@ -1,0 +1,11 @@
+.link-inscription{
+    color: #bc9b5d;
+    text-decoration: underline!important;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    &:hover{
+        color: #353535;
+    }
+}
