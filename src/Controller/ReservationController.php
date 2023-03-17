@@ -16,6 +16,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReservationController extends AbstractController
 {
+
+
+    #[Route('/reservation-info', name: 'app_reservation-info', methods : ['GET', 'POST'])]
+    public function getReservationInfo(Request $request)
+    {
+        $requestData = json_decode($request->getContent(), true);
+        
+        dd('coucou tu viens du JS !!!', $requestData);
+        // $reservationDate = $requestData['date'];
+        $reservationTime = $requestData['time'];
+        // $numGuests = $requestData['num_guests'];
+        // $reservationName = $requestData['reservation_name'];
+        // $allergies = $requestData['allergies'];
+
+        // Effectuer les traitements nécessaires
+
+        // Retourner les données au format JSON
+        $data = [
+        //   'date' => $reservationDate,
+          'time' => $reservationTime,
+        //   'num_guests' => $numGuests,
+        //   'reservation_name' => $reservationName,
+        //   'allergies' => $allergies,
+        ];
+
+        return $this->json($data);
+    }
+
+
     #[Route('/reservation', name: 'app_reservation')]
     public function index( 
         Request $request,
@@ -57,7 +86,8 @@ class ReservationController extends AbstractController
             $manager->persist($reservation);
             $manager->flush();
 
-            return $this-> redirectToRoute('app_home');      
+            // return $this-> redirectToRoute('app_home');      
+            return $this-> redirectToRoute('app_reservation-info');      
         }
 
         return $this->render('pages/reservation/index.html.twig', [
@@ -66,4 +96,7 @@ class ReservationController extends AbstractController
             'restaurant' => $restaurant,
         ]);
     }
+
+
+    
 }

@@ -75,9 +75,9 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('show Utilisateurs', 'fas fa-eye', User::class),
         ]);
 
-        yield MenuItem::subMenu('Coordonnées restaurant', 'fa-solid fa-phone')->setSubItems([
-            MenuItem::linkToCrud('create Coordonnée Restaurant', 'fas fa-plus', Restaurant::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('show Coordonnées Restaurant', 'fas fa-eye', Restaurant::class),
+        yield MenuItem::subMenu('Coordonnées', 'fa-solid fa-phone')->setSubItems([
+            MenuItem::linkToCrud('create Coordonnées', 'fas fa-plus', Restaurant::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Coordonnées', 'fas fa-eye', Restaurant::class),
         ]);
 
         yield MenuItem::subMenu('Photos plats', 'fa-solid fa-image')->setSubItems([

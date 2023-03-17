@@ -34,11 +34,6 @@ class PictureCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             TextEditorField::new('description'),
-            ImageField::new('filename')
-                ->setBasePath('assets/images') 
-                ->setUploadDir('images/') 
-                ->setUploadedFileNamePattern('[randomhash].[extension]') 
-                ->setRequired(false),
             BooleanField::new('isFavorite'),
         ];
     }
