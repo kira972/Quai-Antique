@@ -43,10 +43,8 @@
         "symfony/web-link": "6.2.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
-        "tattali/calendar-bundle": "^1.2",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^2.1"
+        "twig/twig": "^2.12|^3.0"
     },
     "config": {
         "allow-plugins": {

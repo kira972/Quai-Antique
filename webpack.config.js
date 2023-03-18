@@ -36,7 +36,6 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('modal-confirmation', './assets/modal-confirmation.js')
-    .addEntry('modal-remise', './assets/modal-remise.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

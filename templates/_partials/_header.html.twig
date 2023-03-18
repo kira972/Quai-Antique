@@ -1,4 +1,3 @@
-
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600|Pacifico" rel="stylesheet"> 
 <!-- Top Header Start -->
@@ -10,6 +9,7 @@
 <!--  Top Header Stop -->
 <!-- Header Start -->
 </header>
+
 <nav class="navbar navbar-expand-lg" id="nav-menu-container">
   <div class="container-fluid mx-lg-5 mx-2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,33 +18,33 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
+          <a class="nav-link {{ (route_name starts with 'app_home') ? 'active' : '' }}" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("app_carte") }}">Carte</a>
+          <a class="nav-link {{ (route_name starts with 'app_carte') ? 'active' : '' }}" href="{{ path("app_carte") }}">Carte</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("app_menu") }}">Menu</a>
+          <a class="nav-link {{ (route_name starts with 'app_menu') ? 'active' : '' }}" href="{{ path("app_menu") }}">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("app_galerie") }}">Galerie</a>
+          <a class="nav-link {{ (route_name starts with 'app_galerie') ? 'active' : '' }}" href="{{ path("app_galerie") }}">Galerie</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("app_reservation") }}">Réservation</a>
+          <a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation") }}">Réservation</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       
       {% if app.user is null %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("security.login") }}">Se connecter</a>
+          <a class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">Se connecter</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('security.registration') }}">S'inscrire</a>
+          <a class="nav-link {{ (route_name starts with 'security.registration') ? 'active' : '' }}" href="{{ path('security.registration') }}">S'inscrire</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("security.logout") }}">Déconnecter</a>
+          <a class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">Déconnecter</a>
         </li>
       {% endif %}
       </ul>

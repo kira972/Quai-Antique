@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
         {% endblock %}
     </head>
     <body>
+        {% set route_name = app.request.attributes.get('_route') %}
         {% block header %}
             {% include "_partials/_header.html.twig" %}
         {% endblock %}

@@ -1,8 +1,3 @@
-// alert("Confirmation de la commande");
-// const myModal = new bootstrap.Modal(
-//   document.getElementsByClassName("modal"),
-//   options
-// );
 
 // myModal.show(myModal);
 const title = document.querySelector("header h1");

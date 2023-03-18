@@ -2,14 +2,15 @@
 
 namespace App\DataFixtures;
 
+use Datetime;
 use Faker\Factory;
 use App\Entity\Menu;
 use App\Entity\User;
+use App\Entity\Formule;
 use App\Entity\Picture;
 use App\Entity\Product;
-use App\Entity\Formule;
-use App\Entity\Category;
 use App\Entity\Allergie;
+use App\Entity\Category;
 use App\Entity\Restaurant;
 use App\Entity\OpeningTime;
 use App\Entity\Reservation;
@@ -82,7 +83,7 @@ class AppFixtures extends Fixture
         $reservation->setUser($faker->unique()->randomElement($membres))
             ->setRestaurant($restaurant)
             ->setDate($date)
-            ->setHour(new \Datetime($faker->randomElement($hours)))
+            ->setHour(new Datetime($faker->randomElement($hours)))
             ->setNumberCover(mt_rand(1, 10))
             ->setName($faker->word());
 
@@ -96,6 +97,7 @@ class AppFixtures extends Fixture
     //OpeningTime
     $days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
     $times = ['12:00','14:00', '19:00', '22:00'];
+    $date->format('Y-m-d');
     for ($l=0; $l < count($days); $l++) { 
         $openingTime = New OpeningTime();
         $time1 = new \DateTime($times[0]);
