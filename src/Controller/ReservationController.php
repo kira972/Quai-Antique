@@ -56,9 +56,8 @@ class ReservationController extends AbstractController
 
             $manager->persist($reservation);
             $manager->flush();
-
+            return $this->redirectToRoute("app_home");
         }
-
         return $this->render('pages/reservation/index.html.twig', [
             'form' => $form->createView(),
             'openingTimes' => $openingTimes,
