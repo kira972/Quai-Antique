@@ -32,6 +32,11 @@
         <li class="nav-item">
           <a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation") }}">Réservation</a>
         </li>
+        {% if (is_granted('ROLE_ADMIN')) %}
+        <li class="nav-item">
+          <a class="nav-link {{ (route_name starts with 'admin') ? 'active' : '' }}" href="{{ path("admin") }}">Admin</a>
+        </li>
+        {% endif %}
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       
