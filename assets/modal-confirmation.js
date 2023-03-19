@@ -34,14 +34,13 @@ const handleAjax = () => {
 
   alert("fetch");
   fetch("/reservation-info", {
-    method: "POST",
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       // "X-Requested-With": "XMLHttpRequest",
     },
     // body: JSON.stringify(reservationData),
-    body: formData,
   })
     .then((response) => response.json())
     .then((data) => console.log(data))

@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Reservation;
+use id;
 use App\Entity\User;
+use App\Entity\Reservation;
 use App\Form\ReservationType;
+use App\Repository\UserRepository;
+use App\Repository\AllergieRepository;
 use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\OpeningTimeRepository;
+use App\Repository\ReservationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,24 +22,25 @@ class ReservationController extends AbstractController
 {
 
 
-    #[Route('/reservation-info', name: 'app_reservation-info', methods : ['GET', 'POST'])]
-    public function getReservationInfo(Request $request)
+    #[Route('/reservation-info/{id}', name: 'app_reservation-info', methods : ['GET', 'POST'])]
+    public function getReservationInfo( UserRepository $userRepository )
     {
-        $requestData = json_decode($request->getContent(), true);
+        //$repository = json_decode($userRepository->getContent($id), true);
         
-        dd('coucou tu viens du JS !!!', $requestData);
-        // $reservationDate = $requestData['date'];
-        $reservationTime = $requestData['time'];
-        // $numGuests = $requestData['num_guests'];
+        
+        // $userRepository = $id['date'];
+        // $reservationTime = $['time'];
+        // $numGuests = $repositorynNumberCover['num_guests'];
         // $reservationName = $requestData['reservation_name'];
-        // $allergies = $requestData['allergies'];
+        // $allergies = $repositoryAllergie['allergies'];
 
         // Effectuer les traitements nécessaires
 
-        // Retourner les données au format JSON
+        // Retourner les données au format JSON 
         $data = [
+            //'user' => $repository
         //   'date' => $reservationDate,
-          'time' => $reservationTime,
+        //   'time' => $reservationTime,
         //   'num_guests' => $numGuests,
         //   'reservation_name' => $reservationName,
         //   'allergies' => $allergies,
