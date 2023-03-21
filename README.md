@@ -14,4 +14,4 @@ créer une base de donnée commande :composer require symfony/orm-pack puis comp
 
 Création des fixtures avec la commande : composer require --dev orm-fixtures une fois la page fixture renseigné faites php bin/console doctrine:fixtures:load
 
-Pour finir installer  composer require doctrine/doctrine-migrations-bundle pour faire la migration des données vers la base de donnée commande : php bin/console doctrine:migrations:migrate.
+Pour finir installer  composer require doctrine/doctrine-migrations-bundle pour faire la migration des données vers la base de donnée commande : php bin/console make:migration et  php bin/console doctrine:migrations:migrate.
