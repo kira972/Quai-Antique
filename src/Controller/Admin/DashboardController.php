@@ -83,7 +83,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Photos plats', 'fa-solid fa-image')->setSubItems([
             MenuItem::linkToCrud('create Image', 'fas fa-plus', Picture::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('show Images', 'fas fa-eye', Picture::class),
-
         ]);
     }  
 }
