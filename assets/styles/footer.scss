@@ -7,7 +7,7 @@
   background: #353535;
   padding: 30px 0;
   border-top: 3px solid #bc9b5d;
-  ;
+  user-select: none;
 }
 
 #footer .col-sm-6 {
@@ -64,6 +64,10 @@
   border-radius: 20px;
   color: #353535;
   background: #bc9b5d;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #footer .icon li a:hover {
@@ -86,6 +90,7 @@
   border-radius: 2rem;
   transition: all .3s ease-out;
   cursor: pointer;
+
 }
 
 #footer .arrow-up:hover {
