@@ -1,59 +1,63 @@
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600|Pacifico" rel="stylesheet"> 
+<link
 <!-- Top Header Start -->
 <section id="top-header">
-    <div class="logo mb-3">
-        <img src="{{ asset('build/images/log.png') }}"/>
-    </div>
+	<div class="logo py-3 d-flex justify-content-center align-items-center">
+		<div class="me-3 ms-3"><img class="table-set-icon" src="{{ asset("./build/images/table-set-icon.svg") }}" alt="couverts de table"></div>
+
+		<div class="d-flex flex-column text-center">
+
+			<span>QUAI ANTIQUE</span>
+			<span>Restaurant</span>
+		</div>
+		<div class=" ms-3 me-3">
+			<img class="table-set-icon" src="{{ asset("./build/images/table-set-icon.svg") }}" alt="couverts de table"></div>
+
+	</div>
 </section>
 <!--  Top Header Stop -->
-<!-- Header Start -->
-</header>
+<!-- Header Start --></header><nav class="navbar navbar-expand-lg" id="nav-menu-container">
+<div class="container-fluid mx-lg-5 mx-2">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<li class="nav-item">
+				<a class="nav-link {{ (route_name starts with 'app_home') ? 'active' : '' }}" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ (route_name starts with 'app_carte') ? 'active' : '' }}" href="{{ path("app_carte") }}">Carte</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ (route_name starts with 'app_menu') ? 'active' : '' }}" href="{{ path("app_menu") }}">Menu</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ (route_name starts with 'app_galerie') ? 'active' : '' }}" href="{{ path("app_galerie") }}">Galerie</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation") }}">Réservation</a>
+			</li>
+			{% if (is_granted('ROLE_ADMIN')) %}
+				<li class="nav-item">
+					<a class="nav-link {{ (route_name starts with 'admin') ? 'active' : '' }}" href="{{ path("admin") }}">Admin</a>
+				</li>
+			{% endif %}
+		</ul>
+		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-<nav class="navbar navbar-expand-lg" id="nav-menu-container">
-  <div class="container-fluid mx-lg-5 mx-2">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'app_home') ? 'active' : '' }}" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'app_carte') ? 'active' : '' }}" href="{{ path("app_carte") }}">Carte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'app_menu') ? 'active' : '' }}" href="{{ path("app_menu") }}">Menu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'app_galerie') ? 'active' : '' }}" href="{{ path("app_galerie") }}">Galerie</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation") }}">Réservation</a>
-        </li>
-        {% if (is_granted('ROLE_ADMIN')) %}
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'admin') ? 'active' : '' }}" href="{{ path("admin") }}">Admin</a>
-        </li>
-        {% endif %}
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      
-      {% if app.user is null %}
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">Se connecter</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'security.registration') ? 'active' : '' }}" href="{{ path('security.registration') }}">S'inscrire</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">Déconnecter</a>
-        </li>
-      {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Header End -->
+			{% if app.user is null %}
+				<li class="nav-item">
+					<a class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">Se connecter</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ (route_name starts with 'security.registration') ? 'active' : '' }}" href="{{ path('security.registration') }}">S'inscrire</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">Déconnecter</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
+</div></nav><!-- Header End -->

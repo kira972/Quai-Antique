@@ -6,7 +6,7 @@
     position: relative;
     padding: 50px 0 60px 0;
     background: #ffffff;
-    
+
 }
 
 #contact .contact-detail .col-md-6:first-child,
@@ -23,34 +23,37 @@
     text-align: center;
     border-radius: 6px;
 }
+
 #contact .contact-col-1 {
     background: #BC9B5D;
     border-radius: 6px 6px 0 0;
 }
+
 #contact .contact-col-2 {
     background: #353535;
     border-radius: 0 0 6px 6px;
 }
 
 @media screen and (min-width: 767.98px) {
+
     #contact .contact-detail .col-md-6:first-child,
     #contact .contact-detail .col-md-6:last-child {
         padding-right: 0;
         margin-bottom: 30px;
     }
-    #contact .contact-col-1{
+
+    #contact .contact-col-1 {
         border-radius: 6px 0 0 6px;
     }
+
     #contact .contact-col-2 {
         border-radius: 0 6px 6px 0;
     }
 }
 
-#contact .contact-hours,
+#contact .s,
 #contact .contact-info {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 #contact .contact-detail h3 {

@@ -4,7 +4,7 @@
 
 #food-menu {
   position: relative;
-  padding: 60px 0 30px 0;
+  padding: 45px 0 30px 0;
   text-align: center;
   background: #ffffff;
 }
@@ -30,14 +30,37 @@
 #food-menu .single-menu .content {
   position: absolute;
   z-index: 10;
-  font-size: 40px;
-  background-color: rgba(200, 200, 200, 0.5);
+  font-size: 28px;
+  font-weight: bold;
+  color: #433822;
+  background-color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), #bc9b5db4);
   inset: 0;
   transform: translateY(0%);
   transition: all 400ms ease-out;
   text-align: center;
   opacity: 0;
   cursor: pointer;
+}
+
+#food-menu .single-menu .content .text {
+  position: relative;
+  transform: translateY(0);
+  opacity: 0;
+  // animation: animTxtLabel 0.5s ease-out forwards;
+}
+
+#food-menu .single-menu .content:hover .text {
+  transform: scale(0);
+  animation: animTxtLabel 0.5s ease-out forwards;
+}
+
+@keyframes animTxtLabel {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(5rem);
+
+  }
 }
 
 #food-menu .single-menu .content:hover {
