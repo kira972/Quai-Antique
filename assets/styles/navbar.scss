@@ -19,15 +19,18 @@ nav .nav-link {
   font-weight: 600;
   font-size: 18px;
   outline: none;
+  transition: all .45s ease;
+
   &:hover {
     color: #ffffff;
   }
 }
 
-nav .nav-link.active {
+nav .nav-item:not(.nav-item-icon) .nav-link.active {
   color: #ffffff !important;
-  background: #353535;
+  background-color: #353535;
 }
+
 
 nav .navbar-nav {
   .nav-item:hover {

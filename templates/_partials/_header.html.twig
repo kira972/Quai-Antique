@@ -1,5 +1,3 @@
-<!-- Google Fonts -->
-<link
 <!-- Top Header Start -->
 <section id="top-header">
 	<div class="logo py-3 d-flex justify-content-center align-items-center">
@@ -47,15 +45,21 @@
 		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 			{% if app.user is null %}
-				<li class="nav-item">
-					<a class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">Se connecter</a>
+				<li class="nav-item nav-item-icon">
+					<a title="Connexion" class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">
+						<img src="{{asset("./build/images/login.svg")}}" alt="connection">
+					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link {{ (route_name starts with 'security.registration') ? 'active' : '' }}" href="{{ path('security.registration') }}">S'inscrire</a>
-				</li>
+				{# <li class="nav-item nav-item-icon">
+									<a title="Inscription" class="nav-link {{ (route_name starts with 'security.registration') ? 'active' : '' }}" href="{{ path('security.registration') }}">
+										<img src="{{asset("./build/images/register.svg")}}" alt="inscription">
+									</a>
+								</li> #}
 			{% else %}
-				<li class="nav-item">
-					<a class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">Déconnecter</a>
+				<li class="nav-item nav-item-icon">
+					<a title="Déconnexion" class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">
+						<img src="{{asset("./build/images/logout.svg")}}" alt="deconnection">
+					</a>
 				</li>
 			{% endif %}
 		</ul>
