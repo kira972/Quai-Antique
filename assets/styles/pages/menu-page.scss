@@ -1,7 +1,12 @@
 .page-menu .card {
   border: 1px solid #d3d3d3 !important;
+
   img {
     height: 320px;
     object-fit: cover;
   }
+}
+
+.page-menu .card .card-header {
+  background-color: #e8e8e8 !important;
 }
