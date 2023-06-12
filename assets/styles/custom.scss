@@ -3,7 +3,6 @@
 /* ================================================= */
 
 body {
-  color: #353535;
   font-weight: 400;
   font-size: 16px;
 }
@@ -16,7 +15,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-  color: #353535;
+  color: #18444b;
   outline: none;
 }
 
@@ -54,21 +53,20 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
-
 .btn-custom {
-    padding: 12px 35px;
-    border-radius: 35px;
-    color: #353535;
-    background: #bc9b5d;
-    font-weight: bold;
-    transition: 0.5s;
-    outline: none;
-    border: none;
+  padding: 12px 35px;
+  border-radius: 35px;
+  color: #353535;
+  background: #bc9b5d;
+  font-weight: bold;
+  transition: 0.5s;
+  outline: none;
+  border: none;
 }
 
 .btn-custom:hover {
-    color: #bc9b5d;
-    background: #353535;
-  }
+  color: #bc9b5d;
+  background: #18444b;
+}
 
 

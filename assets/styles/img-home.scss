@@ -6,12 +6,12 @@
   position: relative;
   padding: 45px 0 30px 0;
   text-align: center;
-  background: #ffffff;
+  background: #353535;
 }
 
 #food-menu .single-menu {
   position: relative;
-  text-align: center;
+  text-align: center;  
   font-weight: 400;
   margin: 0 0 30px 0;
   padding: 0;
@@ -47,7 +47,6 @@
   position: relative;
   transform: translateY(0);
   opacity: 0;
-  // animation: animTxtLabel 0.5s ease-out forwards;
 }
 
 #food-menu .single-menu .content:hover .text {
@@ -59,7 +58,6 @@
   to {
     opacity: 1;
     transform: scale(1) translateY(5rem);
-
   }
 }
 

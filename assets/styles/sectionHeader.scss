@@ -2,11 +2,13 @@
 /* ---------------- Section Header ----------------- */
 /* ================================================= */
 
-#welcome {
+.container {
   position: relative;
   padding: 45px 0 45px 0;
-  background: #ffffff;
-  text-align: center;
+}
+
+#welcome {
+  background-color: #353535;
 }
 
 #welcome p {
@@ -15,10 +17,10 @@
   max-width: 65rem;
   margin-inline: auto;
   margin-top: 2.5rem;
-  color: #353535;
+  color: #ffffff;
 }
 
-#welcome a {
+a#btn-rounded {
   display: inline-block;
   padding: 12px 35px;
   border-radius: 35px;
@@ -27,9 +29,9 @@
   font-weight: bold;
 }
 
-#welcome a:hover {
+a#btn-rounded:hover {
   color: #bc9b5d;
-  background: #353535;
+  background: #18444b;
 }
 
 .section-header h3 {

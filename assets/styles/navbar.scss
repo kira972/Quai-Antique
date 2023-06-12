@@ -1,21 +1,68 @@
 /* ================================================= */
 /* ------------------ Header CSS ------------------- */
 /* ================================================= */
+#nav .logo span {
+  margin: 0 auto;
+  color: #bc9b5d;
+  text-shadow: 0 4px 4px black;
+}
+
+#nav .logo span:nth-of-type(1) {
+  font-family: 'Jacques Francois Shadow', cursive;
+  font-size: 36px;
+}
+
+#nav .logo span:nth-of-type(2) {
+  font-family: 'Montserrat';
+  font-size: 28px;
+}
+
+#nav .logo .table-set-icon {
+  height: 56px;
+  width: auto;
+}
 
 nav {
   position: relative;
   z-index: 10;
-  background: #bc9b5d;
+  background: #18444b;
   text-align: center;
   -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+  border-bottom: 3px solid #bc9b5d;
+  min-height: auto;
+  padding-block: 1.5rem !important;
+
+  @media screen and (min-width: 992px) {
+    min-height: 125px;
+    padding-block: 0 !important;
+  }
+
+  .logo {
+    display: flex !important;
+    position: relative;
+    top: 0rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    @media screen and (min-width: 992px) {
+      display: none !important;
+    }
+
+    @media screen and (min-width: 1459px) {
+      position: absolute;
+      display: flex !important;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }
 
 nav .nav-link {
   padding: 18px 15px 20px 15px;
   text-decoration: none;
   display: inline-block;
-  color: #353535;
+  color: rgb(164, 164, 164);
   font-weight: 600;
   font-size: 18px;
   outline: none;
@@ -24,6 +71,11 @@ nav .nav-link {
   &:hover {
     color: #ffffff;
   }
+
+  img {
+    height: 2.1rem;
+    width: auto;
+  }
 }
 
 nav .nav-item:not(.nav-item-icon) .nav-link.active {
@@ -31,10 +83,8 @@ nav .nav-item:not(.nav-item-icon) .nav-link.active {
   background-color: #353535;
 }
 
-
 nav .navbar-nav {
   .nav-item:hover {
     color: #fff;
-    background: #bc9b5d;
   }
 }

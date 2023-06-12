@@ -4,8 +4,7 @@
 
 #footer {
   position: relative;
-  background: #353535;
-  padding: 30px 0;
+  background: #18444b;
   border-top: 3px solid #bc9b5d;
   user-select: none;
 }
@@ -75,6 +74,11 @@
   background: #ffffff;
 }
 
+#footer .logoKira{
+  height: 40px;
+  width: 40px;
+}
+
 #footer .arrow-up {
   position: absolute;
   z-index: 10;
@@ -90,7 +94,6 @@
   border-radius: 2rem;
   transition: all .3s ease-out;
   cursor: pointer;
-
 }
 
 #footer .arrow-up:hover {
@@ -107,13 +110,12 @@
   color: #bc9b5d;
   font-size: 1.25rem;
   text-shadow: 0 2px 2px black;
-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 #footer .arrow-up:hover i{
   text-shadow: none;
 }
-
 
 #footer .arrow-up::before {
   content: '';
@@ -121,10 +123,8 @@ transition: all 0.3s ease-out;
   height: 10rem;
   width: 1rem;
   border-radius: 3rem;
-  // background-color: #ffffff;
   left: 50%;
   top: -0.5rem;
-  // transform: translateX(-50%);
   z-index: -1;
 }
 

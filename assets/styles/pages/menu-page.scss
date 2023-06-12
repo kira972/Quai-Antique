@@ -1,5 +1,10 @@
+ .page-menu {
+   background-color: #353535;
+ }
+
 .page-menu .card {
-  border: 1px solid #d3d3d3 !important;
+
+  border: 1px solid #5a5a5a !important;
 
   img {
     height: 320px;
@@ -8,5 +13,18 @@
 }
 
 .page-menu .card .card-header {
-  background-color: #e8e8e8 !important;
+  background-color: #bc9b5d;
+  color: #ffffff;
+}
+
+.page-menu .card .card-body,.page-menu .card .card-footer{
+  background-color: #18444b;
+  color: #ffffff;
+  padding-block: 1.2rem;
+}
+
+
+
+#carte{
+  background-color: #353535;
 }

@@ -3,39 +3,37 @@
 /* ================================================= */
 
 #contact {
-    position: relative;
-    padding: 75px 0 60px 0;
-    background: #ffffff;
-
+  position: relative;
+  padding: 75px 0 60px 0;
+  background: #353535;
 }
 
 #contact .contact-detail .col-md-6:first-child,
 #contact .contact-detail .col-md-6:last-child {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
 #contact .contact-col-1,
 #contact .contact-col-2 {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 30px 15px;
-    text-align: center;
-    border-radius: 6px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 30px 15px;
+  text-align: center;
+  border-radius: 6px;
 }
 
 #contact .contact-col-1 {
-    background: #BC9B5D;
-    border-radius: 6px 6px 0 0;
+  background: #BC9B5D;
+  border-radius: 6px 6px 0 0;
 }
 
 #contact .contact-col-2 {
-    background: #353535;
+    background: #18444b;
     border-radius: 0 0 6px 6px;
 }
 
 @media screen and (min-width: 767.98px) {
-
     #contact .contact-detail .col-md-6:first-child,
     #contact .contact-detail .col-md-6:last-child {
         padding-right: 0;

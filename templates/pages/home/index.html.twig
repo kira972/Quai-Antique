@@ -1,49 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quai Antique - Accueil{% endblock %}
+{% block title %}Quai Antique - Accueil
+{% endblock %}
 {% block body %}
 
-<!-- Welcome Section Start -->
-    <div id="welcome">
-        <div class="container">
+	<!-- Welcome Section Start -->
+	<div id="welcome">
+		<div class="container">
 
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success mt-4">
-                {{ message }}
-                </div>
-            {% endfor %}
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success mt-4">
+					{{ message }}
+				</div>
+			{% endfor %}
 
-            <h1>Bienvenue au Quai Antique</h1>
-            <p>Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes. Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
-        </div>
-    </div>
-<!-- Welcome Section End -->
-<!-- Picture Section Start -->
-    <section id="food-menu">
-        <div class="container">
-            <header class="section-header">
-                <h2 class="mb-5">Un avant-goût de nos spécialités</h2>
-            </header>
-            <div class="row mt-4">
+			<h1>Bienvenue au Quai Antique</h1>
+			<p class="text-center">Le chef Arnaud Michant passionné par le Mexique est ravi de vous accueillir au sein de son nouveau restaurant au coeur de Nantes. Le Quai Antique vous propose au déjeuner comme au dîner une expérience gustative hors du commun, qui à n'en point douter , ravira vos papilles et vous fera voyager dans un univers rempli d'exotisme.</p>
+		</div>
+	</div>
+	<!-- Welcome Section End -->
+	<!-- Picture Section Start -->
+	<section id="food-menu">
+		<div class="container">
+			<header class="section-header">
+				<h2 class="mb-5">Un avant-goût de nos spécialités</h2>
+			</header>
+			<div class="row mt-4">
 
-                {% for pictureIsFavorite in picturesIsFavorite %}
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="single-menu">
-                        <img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.filename)}}" /> 
-                        <div class="content">
-                            <div class="text">{{pictureIsFavorite.name}}</div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-<!-- Picture Section End-->
-            <div id="welcome">                
-                <a href="{{ path("app_reservation") }}">Réserver</a>
-            </div>
-            
-        </div>
-    </section>
+				{% for pictureIsFavorite in picturesIsFavorite %}
+					<div class="col-sm-6 col-md-4 col-lg-3">
+						<div class="single-menu">
+							<img class="img-fluid" src="{{asset("build/images/" ~ pictureIsFavorite.filename)}}"/>
+							<div class="content">
+								<div class="text">{{pictureIsFavorite.name}}</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<!-- Picture Section End-->
+			<div id="welcome">
+				<a class="mt-6" href="{{ path("app_reservation") }}">Réserver</a>
+			</div>
 
-{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
+		</div>
+	</section>
+
+	{{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
 {% endblock %}
