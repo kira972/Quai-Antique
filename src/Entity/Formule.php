@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FormuleRepository;
@@ -16,46 +18,20 @@ class Formule
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?float $price = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
-
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'formule')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Menu $menu = null;
+    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'formules')]
+    private Collection $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -70,14 +46,26 @@ class Formule
         return $this;
     }
 
-    public function getMenu(): ?Menu
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
     {
-        return $this->menu;
+        return $this->products;
     }
 
-    public function setMenu(?Menu $menu): self
+    public function addProduct(Product $product): self
     {
-        $this->menu = $menu;
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        $this->products->removeElement($product);
 
         return $this;
     }

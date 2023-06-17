@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -25,6 +28,17 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'categories')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Formule::class, mappedBy: 'products')]
+    private Collection $formules;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    public function __construct()
+    {
+        $this->formules = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -80,6 +94,45 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Formule>
+     */
+    public function getFormules(): Collection
+    {
+        return $this->formules;
+    }
+
+    public function addFormule(Formule $formule): self
+    {
+        if (!$this->formules->contains($formule)) {
+            $this->formules->add($formule);
+            $formule->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormule(Formule $formule): self
+    {
+        if ($this->formules->removeElement($formule)) {
+            $formule->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
