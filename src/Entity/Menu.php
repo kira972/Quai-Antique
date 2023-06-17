@@ -27,6 +27,9 @@ class Menu
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formule::class, orphanRemoval: true)]
     private Collection $formule;
 
+    #[ORM\Column]
+    private ?float $price = null;
+
     public function __construct()
     {
         $this->formule = new ArrayCollection();
@@ -87,6 +90,18 @@ class Menu
                 $formule->setMenu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
