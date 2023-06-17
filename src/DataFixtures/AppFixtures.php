@@ -118,37 +118,35 @@ class AppFixtures extends Fixture
         }
 
         //Menu
-        $menu = new Menu();
-        $menu->setName($faker->word())
-            ->setDescription($faker->text(100));
-
-        $manager->persist($menu);
-
-        //Formule
-        for ($n = 0; $n < 3; $n++) {
-            $formule = new Formule();
-            $formule->setDescription($faker->text(100))
-                ->setName($faker->word())
-                ->setPrice($faker->randomFloat(1, 20, 30))
-                ->setMenu($menu);
-
-            $manager->persist($formule);
+        $menusName = ['Menu du midi', 'Menu du soir', 'Menu Enfant'];
+        for ($m=0; $m < 3; $m++) {
+            $menu = new Menu();
+            $menu->setName($menusName[$m]) 
+                ->setDescription($faker->text(100))
+                ->setPrice($faker->randomFloat(1, 15, 35));
+            $manager->persist($menu);
         }
 
+
+
         //Category
-        for ($o = 0; $o < 6; $o++) {
+        $categoriesName = ['Entrées', 'Viandes', 'Poissons', 'Desserts'];
+        $categories =[];
+        for ($o = 0; $o < 4; $o++) {
             $category = new Category();
-            $category->setName($faker->word());
+            $category->setName($categoriesName[$o]);
             $categories[] = $category;
 
             $manager->persist($category);
         }
 
         //Product
+        $products = [];
         for ($p = 0; $p < 38; $p++) {
             $product = new Product();
             $product->setName($faker->word())
                 ->setPrice($faker->randomFloat(1, 18, 36))
+                ->setDescription($faker->text(100))
                 ->setCategory($faker->randomElement($categories));
             $products[] = $product;
 
@@ -167,6 +165,14 @@ class AppFixtures extends Fixture
                 ->setProduct($faker->unique()->randomElement($products));
 
             $manager->persist($picture);
+        }
+
+        //Formule
+        for ($n = 0; $n < 3; $n++) {
+            $formule = new Formule();
+            $formule->setName($faker->word())
+                ->addProduct($faker->randomElement($products));
+            $manager->persist($formule);
         }
 
         $manager->flush();
