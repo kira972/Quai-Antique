@@ -36,6 +36,7 @@ class PictureCrudController extends AbstractCrudController
             TextField::new('name'),
             TextEditorField::new('description'),
             BooleanField::new('isFavorite'),
+            BooleanField::new('isShowingInGallery'),
             TextField::new('images')->setFormType(VichImageType::class)->onlyWhenCreating(),
             ImageField::new('images')->setBasePath('/images')->onlyOnIndex(),
         ];

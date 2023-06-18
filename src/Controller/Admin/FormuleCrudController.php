@@ -32,8 +32,6 @@ class FormuleCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            TextEditorField::new('description'),
-            Field::new('price'),
         ];
     }
 }

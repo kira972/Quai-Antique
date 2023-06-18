@@ -35,6 +35,9 @@ class Picture
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 
+    #[ORM\Column]
+    private ?bool $isShowingInGallery = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,6 +99,18 @@ class Picture
     public function setProduct(Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function isIsShowingInGallery(): ?bool
+    {
+        return $this->isShowingInGallery;
+    }
+
+    public function setIsShowingInGallery(bool $isShowingInGallery): self
+    {
+        $this->isShowingInGallery = $isShowingInGallery;
 
         return $this;
     }

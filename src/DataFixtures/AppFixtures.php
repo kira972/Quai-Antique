@@ -38,7 +38,8 @@ class AppFixtures extends Fixture
                 ->setEmail($faker->unique()->email())
                 ->setPassword($this->passwordHasher->hashPassword($user, 'password'));
             if ($i < 2) {
-                $user->setRoles(['ROLE_ADMIN']);
+                $user->setRoles(['ROLE_ADMIN'])
+                ->setDefaultNumberCover(1);
             } else {
                 $user->setRoles(['ROLE_MEMBER'])
                     ->setDefaultNumberCover(mt_rand(1, 10));
@@ -154,21 +155,21 @@ class AppFixtures extends Fixture
         }
 
         //Picture
-        $pictsFilename = ['fajitas.webp', 'assortiment.webp', 'buffet-fiesta.webp', 'burritos.webp', 'carlota.webp', 'ceviche.webp', 'cheesecake-caramel.webp', 'chilaquiles-rojos.webp', 'chilaquiles.webp', 'chilicon.webp', 'chololat-epice.webp', 'churros.webp', 'crevette.webp', 'empanadas.webp', 'enchilada.webp', 'entrees.webp', 'horchata.webp', 'crevette.webp', 'chilaquiles-rojos.webp', 'chilicon.webp', 'figue.webp', 'mexicain-avocat.webp', 'mexican.webp', 'plat-mexicain.webp', 'poisson.webp', 'poisson1.webp', 'poisson2.webp', 'poisson3.webp', 'poisson4.webp', 'pozole.webp', 'pudding.webp', 'quesadillaS.webp', 'quesadilla-2.webp', 'tacos-beef.webp', 'tacos-saumon.webp', 'tacos.webp', 'tostadas.webp', 'viandes.webp',];
-        $pictsName = ['Fajitas', 'Assortiment', 'Buffet fiesta', 'Burritos', 'Carlota', 'Ceviche', 'Cheesecake caramel', 'Chilaquiles rojos', 'Chilaquiles', 'Chilicon', 'Chololat épicé', 'Churros', 'Crevette', 'Empanadas', 'Enchilada', 'Entrées', 'Horchata', 'Crevette', 'Chilaquiles rojos', 'Chilicon', 'Figue', 'Mexican', 'Mexican', 'Plat mexicain', 'Poisson', 'Poisson', 'Poisson', 'Poisson', 'Poisson', 'Pozole', 'Pudding', 'Quesadilla', 'Quesadilla', 'Tacos beef', 'Tacos saumon', 'Tacos', 'Tostadas', 'Viandes',];
+        $pictsFilename = ['fajitas.webp', 'assortiment.webp', 'buffet-fiesta.webp', 'burritos.webp', 'churros.webp','carlota.webp', 'ceviche.webp', 'cheesecake-caramel.webp', 'chilaquiles-rojos.webp', 'chilaquiles.webp', 'chilicon.webp', 'chololat-epice.webp', 'churros.webp', 'crevette.webp', 'empanadas.webp', 'enchilada.webp', 'entrees.webp', 'horchata.webp', 'chilaquiles-rojos.webp', 'chilicon.webp', 'figue.webp', 'mexicain-avocat.webp', 'mexican.webp', 'plat-mexicain.webp', 'poisson.webp', 'poisson1.webp', 'poisson2.webp', 'poisson3.webp', 'poisson4.webp', 'pozole.webp', 'pudding.webp', 'quesadillaS.webp', 'quesadilla-2.webp', 'tacos-beef.webp', 'tacos-saumon.webp', 'tacos.webp', 'tostadas.webp', 'viandes.webp',];
+        $pictsName = ['fajitas', 'assortiment', 'buffet-fiesta', 'burritos', 'churros', 'carlota', 'ceviche', 'cheesecake-caramel', 'chilaquiles-rojos', 'chilaquiles', 'chilicon', 'chololat-epice', 'churros', 'crevette', 'empanadas', 'enchilada', 'entrees', 'horchata', 'chilaquiles-rojos', 'chilicon', 'figue', 'mexicain-avocat', 'mexican', 'plat-mexicain', 'poisson', 'poisson1', 'poisson2', 'poisson3', 'poisson4', 'pozole', 'pudding', 'quesadillaS', 'quesadilla-2', 'tacos-beef', 'tacos-saumon', 'tacos', 'tostadas', 'viandes',];
         for ($q = 0; $q < count($pictsFilename); $q++) {
             $picture = new Picture();
             $picture->setName($pictsName[$q])
                 ->setDescription($faker->text(300))
                 ->setFilename($pictsFilename[$q])
                 ->setIsFavorite($faker->boolean())
-                ->setProduct($faker->unique()->randomElement($products));
-
+                ->setProduct($faker->unique()->randomElement($products))
+                ->setIsShowingInGallery($faker->boolean());
             $manager->persist($picture);
         }
 
         //Formule
-        for ($n = 0; $n < 3; $n++) {
+        for ($n = 0; $n < 4; $n++) {
             $formule = new Formule();
             $formule->setName($faker->word())
                 ->addProduct($faker->randomElement($products));
