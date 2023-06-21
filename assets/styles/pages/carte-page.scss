@@ -1,21 +1,24 @@
- .page-carte {
-     background-color: #353535;
- }
+#carte {
+    background-color: black;
+}
 
- .page-carte .card {
+#carte-body {
+    background-color: black;
+}
 
-     border: 1px solid #d3d3d3 !important;
+#carte-body .card-body .list-group .list-group-item {
+    background-color: inherit;
+    color: #ffffff;
+    border-bottom: solid 1px #bc9b5d;
+}
 
-     img {
-         height: 320px;
-         object-fit: cover;
-     }
- }
+.page-carte .card {
 
- .page-carte .card .card-header {
-     background-color: #ffffff !important;
- }
+    border: 1px solid #bc9b5d !important;
+    img {
+        height: 320px;
+        object-fit: cover;
+    }
+}
 
- #carte {
-     background-color: #353535;
- }
+

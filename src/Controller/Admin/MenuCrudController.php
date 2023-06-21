@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class MenuCrudController extends AbstractCrudController
 {
@@ -23,17 +25,21 @@ class MenuCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Menus')
             ->setEntityLabelInSingular('Menu')
 
-            ->setPageTitle("index", "Quai Antique - Administration de la carte");
+            ->setPageTitle("index", "Quai Antique - Administration du menu");
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
             TextField::new('name'),
             TextEditorField::new('description'),
             Field::new('price'),
+            AssociationField::new('picture'),
+            
+            // AssociationField::new('images')->setBasePath('/images')->onlyOnIndex(),
+            // ImageField::new('images')->setBasePath('/images'),
+
         ];
     }
-
 }

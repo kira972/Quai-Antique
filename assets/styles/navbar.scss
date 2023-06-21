@@ -9,16 +9,30 @@
 
 #nav .logo span:nth-of-type(1) {
   font-family: 'Jacques Francois Shadow', cursive;
-  font-size: 36px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 992px) {
+  #nav .logo span:nth-of-type(1) {
+    font-size: 36px;
+  }
+
+  #nav .logo span:nth-of-type(2) {
+    font-size: 28px;
+  }
+    #nav .logo .table-set-icon {
+      height: 56px;
+      width: auto;
+    }
 }
 
 #nav .logo span:nth-of-type(2) {
   font-family: 'Montserrat';
-  font-size: 28px;
+  font-size: 20px;
 }
 
 #nav .logo .table-set-icon {
-  height: 56px;
+  height: 41px;
   width: auto;
 }
 

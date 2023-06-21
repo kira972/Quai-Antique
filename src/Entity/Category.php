@@ -23,6 +23,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private Collection $products;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Picture $picture = null;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -76,4 +79,20 @@ class Category
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
 }

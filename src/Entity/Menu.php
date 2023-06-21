@@ -25,6 +25,10 @@ class Menu
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Picture $picture = null;
+
 
     public function getId(): ?int
     {
@@ -63,6 +67,18 @@ class Menu
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(Picture $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

@@ -2,36 +2,37 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Formule;
+use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class FormuleCrudController extends AbstractCrudController
+class CategoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Formule::class;
+        return Category::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Formules')
-            ->setEntityLabelInSingular('Formule')
+            ->setEntityLabelInPlural('Categories')
+            ->setEntityLabelInSingular('Category')
 
-            ->setPageTitle("index", "Quai Antique - Administration des formules");
+            ->setPageTitle("index", "Quai Antique - Administration des catégories");
     }
-
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
             TextField::new('name'),
+            AssociationField::new('picture'),
         ];
     }
 }

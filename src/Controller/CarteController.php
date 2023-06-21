@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\FormuleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\RestaurantRepository;
 use App\Repository\OpeningTimeRepository;
@@ -22,12 +21,10 @@ class CarteController extends AbstractController
         $openingTimes = $openingTimeRepository->findAll();
         $restaurant = $restaurantRepository->findOneBy(['name' => 'Quai Antique']);
         $categories = $categoryRepository->findAll();
-        $picturesFormule = ['build/images/entrees.webp', 'build/images/viandes.webp', 'build/images/poisson1.webp', 'build/images/horchata.webp'];
         return $this->render('pages/carte/index.html.twig', [
             'openingTimes' => $openingTimes,
             'restaurant' => $restaurant,
             'categories' => $categories,
-            'picturesFormules' => $picturesFormule,
         ]);
     }
 }

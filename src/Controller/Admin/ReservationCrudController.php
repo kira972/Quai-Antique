@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class ReservationCrudController extends AbstractCrudController
 {
@@ -30,8 +31,8 @@ class ReservationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('user'),
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
+            AssociationField::new('user'),
             DateField::new('date'),
             TimeField::new('hour'),
             NumberField::new('numberCover'),

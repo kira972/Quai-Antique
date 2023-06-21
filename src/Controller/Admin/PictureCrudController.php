@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class PictureCrudController extends AbstractCrudController
@@ -32,13 +33,17 @@ class PictureCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
+            // IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             TextEditorField::new('description'),
             BooleanField::new('isFavorite'),
             BooleanField::new('isShowingInGallery'),
-            TextField::new('images')->setFormType(VichImageType::class)->onlyWhenCreating(),
-            ImageField::new('images')->setBasePath('/images')->onlyOnIndex(),
+            TextField::new('filename')->setFormType(VichImageType::class)->onlyWhenCreating(),
+            ImageField::new('filename', "File")
+            ->setUploadDir("public/uploads/images")
+            ->setBasePath('uploads/images'),
+            AssociationField::new('product')
         ];
     }
 }

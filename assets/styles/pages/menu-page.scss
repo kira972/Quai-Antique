@@ -1,30 +1,35 @@
- .page-menu {
-   background-color: #353535;
- }
+.page-menu {
+  background-color: black;
+}
 
 .page-menu .card {
 
-  border: 1px solid #5a5a5a !important;
+  border: 1px solid #bc9b5d !important;
 
   img {
+    width: 100%;
     height: 320px;
     object-fit: cover;
   }
 }
 
 .page-menu .card .card-header {
-  background-color: #bc9b5d;
+  background-color: black;
   color: #ffffff;
 }
 
-.page-menu .card .card-body,.page-menu .card .card-footer{
-  background-color: #18444b;
+.page-menu .card .card-body,
+.page-menu .card .card-footer {
+  border: 1px solid #bc9b5d;
+    border-left: none;
+    border-right: none;
+
+  background-color: black;
   color: #ffffff;
   padding-block: 1.2rem;
 }
 
-
-
-#carte{
-  background-color: #353535;
+.page-menu .card .card-footer{
+      border: none;
 }
+

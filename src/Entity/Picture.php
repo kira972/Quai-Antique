@@ -32,7 +32,7 @@ class Picture
     private ?bool $isFavorite = null;
 
     #[ORM\OneToOne(inversedBy: 'pictures', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Product $product = null;
 
     #[ORM\Column]
@@ -113,5 +113,10 @@ class Picture
         $this->isShowingInGallery = $isShowingInGallery;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+    return $this->name;
     }
 }

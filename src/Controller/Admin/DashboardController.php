@@ -6,15 +6,15 @@ namespace App\Controller\Admin;
 
 use App\Entity\Menu;
 use App\Entity\User;
-use App\Entity\Formule;
 use App\Entity\Picture;
+use App\Entity\Product;
 use App\Entity\Restaurant;
 use App\Entity\OpeningTime;
 use App\Entity\Reservation;
+use App\Entity\Category;
 use App\Controller\Admin\MenuCrudController;
 use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
-use App\Controller\Admin\FormuleCrudController;
 use App\Controller\Admin\PictureCrudController;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -31,8 +31,7 @@ class DashboardController extends AbstractDashboardController
 {
     public function __construct(
         private AdminUrlGenerator $adminUrlGenerator
-    ){
-        
+    ) {
     }
 
     #[Route('/admin', name: 'admin')]
@@ -40,21 +39,21 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $url = $this->adminUrlGenerator
-        ->setcontroller(OpeningTimeCrudController::class)
-        ->setcontroller(ReservationTimeCrudController::class)
-        ->setcontroller(UserCrudController::class)
-        ->setcontroller(RestaurantCrudController::class)
-        ->setcontroller(PictureCrudController::class)
-        ->setController(FormuleCrudController::class)
-        ->setController(MenuCrudController::class)
+            ->setcontroller(OpeningTimeCrudController::class)
+            ->setcontroller(ReservationTimeCrudController::class)
+            ->setcontroller(UserCrudController::class)
+            ->setcontroller(RestaurantCrudController::class)
+            ->setcontroller(PictureCrudController::class)
+            ->setController(MenuCrudController::class)
+            ->setController(ProductCrudController::class)
+            ->setController(CategoryCrudController::class)
 
 
 
 
-        ->generateUrl();
+            ->generateUrl();
 
         return $this->redirect($url);
-
     }
 
     public function configureDashboard(): Dashboard
@@ -91,19 +90,19 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('show Images', 'fas fa-eye', Picture::class),
         ]);
 
-        yield MenuItem::subMenu('Carte', 'fa-solid fa-pen-to-square')->setSubItems([
-            MenuItem::linkToCrud('create Carte', 'fas fa-plus', Formule::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('show Carte', 'fas fa-eye', Formule::class),
+        yield MenuItem::subMenu('Menu', 'fa-solid fa-pen-to-square')->setSubItems([
+            MenuItem::linkToCrud('create Menu', 'fas fa-plus', Menu::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Menu', 'fas fa-eye', Menu::class),
         ]);
 
-        yield MenuItem::subMenu('Formule', 'fa-solid fa-pen-to-square')->setSubItems([
-            MenuItem::linkToCrud('create Formule', 'fas fa-plus', Menu::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('show Formule', 'fas fa-eye', Menu::class),
+        yield MenuItem::subMenu('Product', 'fa-solid fa-pen-to-square')->setSubItems([
+            MenuItem::linkToCrud('create Product', 'fas fa-plus', Product::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Product', 'fas fa-eye', Product::class),
         ]);
-    }  
+
+        yield MenuItem::subMenu('Category', 'fa-solid fa-pen-to-square')->setSubItems([
+            MenuItem::linkToCrud('create Category', 'fas fa-plus', Category::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('show Category', 'fas fa-eye', Category::class),
+        ]);
+    }
 }
-
-
-
-
-

@@ -6,7 +6,6 @@ use Datetime;
 use Faker\Factory;
 use App\Entity\Menu;
 use App\Entity\User;
-use App\Entity\Formule;
 use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\Allergie;
@@ -51,7 +50,8 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
         }
-
+        var_dump('allergie');
+        
         //Allergie
         $allergiesName = ['Oeuf', 'Lait', 'Gluten', 'Moutarde', 'Arachide', 'Poissons', 'Soja', 'Sulfites', 'Fruits à coque', 'Céleri'];
         for ($j = 0; $j < 10; $j++) {
@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
             $allergies[] = $allergie;
             $manager->persist($allergie);
         }
-
+        var_dump('restaurant');
         //Restaurant
         $restaurant = new Restaurant();
         $restaurant->setName('Quai Antique')
@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($restaurant);
 
-
+        var_dump('reservation');
         //Reservation
         for ($k = 0; $k < 16; $k++) {
 
@@ -88,13 +88,13 @@ class AppFixtures extends Fixture
                 ->setNumberCover(mt_rand(1, 10))
                 ->setName($faker->word());
 
-            for ($s = 0; $s < mt_rand(0, 3); $s++) {
+            for ($s = 0; $s < mt_rand(0, 2); $s++) {
                 $reservation->addAllergieReserv($faker->unique()->randomElement($allergies));
             }
 
             $manager->persist($reservation);
         }
-
+        var_dump('openingTime');
         //OpeningTime
         $days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
         $times = ['12:00', '14:00', '19:00', '22:00'];
@@ -117,19 +117,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($openingTime);
         }
-
-        //Menu
-        $menusName = ['Menu du midi', 'Menu du soir', 'Menu Enfant'];
-        for ($m=0; $m < 3; $m++) {
-            $menu = new Menu();
-            $menu->setName($menusName[$m]) 
-                ->setDescription($faker->text(100))
-                ->setPrice($faker->randomFloat(1, 15, 35));
-            $manager->persist($menu);
-        }
-
-
-
+        var_dump('category');
         //Category
         $categoriesName = ['Entrées', 'Viandes', 'Poissons', 'Desserts'];
         $categories =[];
@@ -140,10 +128,10 @@ class AppFixtures extends Fixture
 
             $manager->persist($category);
         }
-
+        var_dump('product');
         //Product
         $products = [];
-        for ($p = 0; $p < 38; $p++) {
+        for ($p = 0; $p < 58; $p++) {
             $product = new Product();
             $product->setName($faker->word())
                 ->setPrice($faker->randomFloat(1, 18, 36))
@@ -153,10 +141,11 @@ class AppFixtures extends Fixture
 
             $manager->persist($product);
         }
-
+        var_dump('picture');
         //Picture
-        $pictsFilename = ['fajitas.webp', 'assortiment.webp', 'buffet-fiesta.webp', 'burritos.webp', 'churros.webp','carlota.webp', 'ceviche.webp', 'cheesecake-caramel.webp', 'chilaquiles-rojos.webp', 'chilaquiles.webp', 'chilicon.webp', 'chololat-epice.webp', 'churros.webp', 'crevette.webp', 'empanadas.webp', 'enchilada.webp', 'entrees.webp', 'horchata.webp', 'chilaquiles-rojos.webp', 'chilicon.webp', 'figue.webp', 'mexicain-avocat.webp', 'mexican.webp', 'plat-mexicain.webp', 'poisson.webp', 'poisson1.webp', 'poisson2.webp', 'poisson3.webp', 'poisson4.webp', 'pozole.webp', 'pudding.webp', 'quesadillaS.webp', 'quesadilla-2.webp', 'tacos-beef.webp', 'tacos-saumon.webp', 'tacos.webp', 'tostadas.webp', 'viandes.webp',];
-        $pictsName = ['fajitas', 'assortiment', 'buffet-fiesta', 'burritos', 'churros', 'carlota', 'ceviche', 'cheesecake-caramel', 'chilaquiles-rojos', 'chilaquiles', 'chilicon', 'chololat-epice', 'churros', 'crevette', 'empanadas', 'enchilada', 'entrees', 'horchata', 'chilaquiles-rojos', 'chilicon', 'figue', 'mexicain-avocat', 'mexican', 'plat-mexicain', 'poisson', 'poisson1', 'poisson2', 'poisson3', 'poisson4', 'pozole', 'pudding', 'quesadillaS', 'quesadilla-2', 'tacos-beef', 'tacos-saumon', 'tacos', 'tostadas', 'viandes',];
+        $pictureMenuList = [];
+        $pictsFilename = ['fajitas.webp', 'assortiment.webp', 'buffet-fiesta.webp', 'burritos.webp', 'churros.webp','carlota.webp', 'ceviche.webp', 'cheesecake-caramel.webp', 'chilaquiles-rojos.webp', 'chilaquiles.webp', 'chilicon.webp', 'chololat-epice.webp', 'churros.webp', 'crevette.webp', 'empanadas.webp', 'enchilada.webp', 'entrees.webp', 'horchata.webp', 'chilaquiles-rojos.webp', 'chilicon.webp', 'figue.webp', 'mexicain-avocat.webp', 'mexican.webp', 'plat-mexicain.webp', 'poisson.webp', 'poisson1.webp', 'poisson2.webp', 'poisson3.webp', 'poisson4.webp', 'pozole.webp', 'pudding.webp', 'quesadillaS.webp', 'quesadilla-2.webp', 'tacos-beef.webp', 'tacos-saumon.webp', 'tacos.webp', 'tostadas.webp', 'viandes.webp','menu1', 'menu2','menu3'];
+        $pictsName = ['fajitas', 'assortiment', 'buffet-fiesta', 'burritos', 'churros', 'carlota', 'ceviche', 'cheesecake-caramel', 'chilaquiles-rojos', 'chilaquiles', 'chilicon', 'chololat-epice', 'churros', 'crevette', 'empanadas', 'enchilada', 'entrees', 'horchata', 'chilaquiles-rojos', 'chilicon', 'figue', 'mexicain-avocat', 'mexican', 'plat-mexicain', 'poisson', 'poisson1', 'poisson2', 'poisson3', 'poisson4', 'pozole', 'pudding', 'quesadillaS', 'quesadilla-2', 'tacos-beef', 'tacos-saumon', 'tacos', 'tostadas', 'viandes', 'menu1', 'menu2', 'menu3'];
         for ($q = 0; $q < count($pictsFilename); $q++) {
             $picture = new Picture();
             $picture->setName($pictsName[$q])
@@ -165,15 +154,23 @@ class AppFixtures extends Fixture
                 ->setIsFavorite($faker->boolean())
                 ->setProduct($faker->unique()->randomElement($products))
                 ->setIsShowingInGallery($faker->boolean());
+            
+            if ($q >= (count($pictsFilename) - 3)){
+                $pictureMenuList[] = $picture;
+            }
             $manager->persist($picture);
         }
+        
+        //Menu
+        $menusName = ['Menu du midi', 'Menu du soir', 'Menu Enfant'];
+        for ($m = 0; $m < 3; $m++) {
+            $menu = new Menu();
+            $menu->setName($menusName[$m])
+                ->setDescription($faker->text(100))
+                ->setPrice($faker->randomFloat(1, 15, 35))
+                ->setPicture($pictureMenuList[$m]);
 
-        //Formule
-        for ($n = 0; $n < 4; $n++) {
-            $formule = new Formule();
-            $formule->setName($faker->word())
-                ->addProduct($faker->randomElement($products));
-            $manager->persist($formule);
+            $manager->persist($menu);
         }
 
         $manager->flush();
