@@ -1,5 +1,5 @@
- <?php
+  <?php
 
-  return array (
-  'APP_ENV' => 'PROD',
-);
+#   return array (
+#   'APP_ENV' => 'prod',
+# );

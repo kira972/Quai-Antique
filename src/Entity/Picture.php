@@ -31,12 +31,11 @@ class Picture
     #[ORM\Column(nullable: true)]
     private ?bool $isFavorite = null;
 
-    #[ORM\OneToOne(inversedBy: 'pictures', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Product $product = null;
-
     #[ORM\Column]
     private ?bool $isShowingInGallery = null;
+
+    #[ORM\OneToOne(mappedBy: 'picture', cascade: ['persist', 'remove'])]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -91,18 +90,6 @@ class Picture
         return $this;
     }
 
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(Product $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
     public function isIsShowingInGallery(): ?bool
     {
         return $this->isShowingInGallery;
@@ -118,5 +105,27 @@ class Picture
     public function __toString()
     {
     return $this->name;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($product === null && $this->product !== null) {
+            $this->product->setPicture(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($product !== null && $product->getPicture() !== $this) {
+            $product->setPicture($this);
+        }
+
+        $this->product = $product;
+
+        return $this;
     }
 }

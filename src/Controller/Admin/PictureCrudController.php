@@ -43,7 +43,7 @@ class PictureCrudController extends AbstractCrudController
             ImageField::new('filename', "File")
             ->setUploadDir("public/uploads/images")
             ->setBasePath('uploads/images'),
-            AssociationField::new('product')
+            // AssociationField::new('product')
         ];
     }
 }

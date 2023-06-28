@@ -38,7 +38,8 @@ class ProductCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             Field::new('price'),
             AssociationField::new('category'),
-            TextField::new('pictures')->hideOnForm(),
+            // TextField::new('pictures')->hideOnForm(),
+            AssociationField::new('picture'),
             
         ];
     }

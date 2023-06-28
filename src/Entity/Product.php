@@ -20,15 +20,16 @@ class Product
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\OneToOne(mappedBy: 'product', cascade: ['persist', 'remove'])]
-    private ?Picture $pictures = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\OneToOne(inversedBy: 'product', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Picture $picture = null;
 
 
     public function getId(): ?int
@@ -60,23 +61,6 @@ class Product
         return $this;
     }
 
-    public function getPictures(): ?Picture
-    {
-        return $this->pictures;
-    }
-
-    public function setPictures(Picture $pictures): self
-    {
-        // set the owning side of the relation if necessary
-        if ($pictures->getProduct() !== $this) {
-            $pictures->setProduct($this);
-        }
-
-        $this->pictures = $pictures;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -103,5 +87,17 @@ class Product
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
     }
 }
