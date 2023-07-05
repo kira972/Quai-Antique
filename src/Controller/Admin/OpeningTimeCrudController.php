@@ -32,7 +32,6 @@ class OpeningTimeCrudController extends AbstractCrudController
             TimeField::new('lunchClose'),
             TimeField::new('dinnerOpen'),
             TimeField::new('dinnerClose'),
-
         ];
     }
 }

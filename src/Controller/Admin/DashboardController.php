@@ -12,6 +12,7 @@ use App\Entity\Restaurant;
 use App\Entity\OpeningTime;
 use App\Entity\Reservation;
 use App\Entity\Category;
+use App\Entity\Contact;
 use App\Controller\Admin\MenuCrudController;
 use App\Controller\Admin\UserCrudController;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
             ->setController(MenuCrudController::class)
             ->setController(ProductCrudController::class)
             ->setController(CategoryCrudController::class)
+            ->setController(ContactCrudController::class)
 
 
 
@@ -103,6 +105,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Category', 'fa-solid fa-pen-to-square')->setSubItems([
             MenuItem::linkToCrud('create Category', 'fas fa-plus', Category::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('show Category', 'fas fa-eye', Category::class),
+        ]);
+        yield MenuItem::subMenu('Email', 'fa-solid fa-pen-to-square')->setSubItems([
+            MenuItem::linkToCrud('show Email', 'fas fa-eye', Contact::class),
         ]);
     }
 }

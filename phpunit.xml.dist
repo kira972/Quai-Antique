@@ -15,12 +15,6 @@
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
-
-        <!-- ###+ karser/karser-recaptcha3-bundle ### -->
-        <!-- Get your API key and secret from https://g.co/recaptcha/v3 -->
-        <env name="RECAPTCHA3_KEY" value="my_site_key"/>
-        <env name="RECAPTCHA3_SECRET" value="my_secret"/>
-        <!-- ###- karser/karser-recaptcha3-bundle ### -->
     </php>
 
     <testsuites>

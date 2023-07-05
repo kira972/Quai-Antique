@@ -2,27 +2,29 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Contact;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
-class UserCrudController extends AbstractCrudController
+class ContactCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Contact::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle("index", "Quai Antique - Administration des utilisateurs")
-            ->setEntityLabelInPlural('Utilisateurs')
-            ->setEntityLabelInSingular('Utilisateur');
+            ->setEntityLabelInPlural('Emails')
+            ->setEntityLabelInSingular('Email')
+
+            ->setPageTitle("index", "Quai Antique - Administration des messages");
     }
 
     public function configureFields(string $pageName): iterable
@@ -32,7 +34,8 @@ class UserCrudController extends AbstractCrudController
             TextField::new('firstName'),
             TextField::new('lastName'),
             EmailField::new('email'),
-            AssociationField::new('allergie')
+            TextField::new('subject'),
+            TextareaField::new('message'),
         ];
     }
 }
