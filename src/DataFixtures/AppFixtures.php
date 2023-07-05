@@ -6,6 +6,7 @@ use Datetime;
 use Faker\Factory;
 use App\Entity\Menu;
 use App\Entity\User;
+use App\Entity\Contact;
 use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\Allergie;
@@ -177,6 +178,19 @@ class AppFixtures extends Fixture
                 ->setPicture($pictureMenuList[$m]);
 
             $manager->persist($menu);
+        }
+
+        //Contact
+        for ($z=0; $z < 5; $z++) { 
+            $contact=new Contact();
+            $contact->setfirstname($faker->firstname())
+            ->setLastName($faker->lastname())
+            ->setEmail($faker->unique()->email())
+            ->setsubject('Demande numéro' . ($i + 1))
+            ->setMessage($faker->text());
+
+            $manager->persist($contact);
+
         }
 
         $manager->flush();

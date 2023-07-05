@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Quai Antique - Contact
+{% endblock %}
+
+
+{% block body %}
+
+</div>
+	<main class="registration-page">
+		<div class="container">
+			<h1 class="mt-5">Contactez-nous</h1>
+			{{ form_start(form) }}
+			<div class="register-form mt-4">
+				<div class="my-custom-class-for-errors">
+					{{ form_errors(form) }}
+				</div>
+
+				<div class="row mb-5">
+					<div class="col-12">
+						{{ form_label(form.firstname) }}
+						{{ form_widget(form.firstname) }}
+					</div>
+					<div class="col-12">
+						{{ form_label(form.lastname) }}
+						{{ form_widget(form.lastname) }}
+					</div>
+					<div class="col-12">
+						{{ form_label(form.email) }}
+						{{ form_widget(form.email) }}
+					</div>
+
+					<div class="col-12">
+						{{ form_label(form.subject) }}
+						{{ form_widget(form.subject) }}
+
+                    <div class="col-12">
+
+							{{ form_label(form.message) }}
+							{{ form_widget(form.message) }}
+						</div>
+					</div>
+					<div class="wrapper-btn">
+						<button type="submit" class="btn-custom">
+							Envoyer
+						</button>
+					</div>
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</main>
+{% endblock %}
