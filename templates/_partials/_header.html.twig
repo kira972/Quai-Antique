@@ -1,74 +1,72 @@
 <!-- Top Header Start -->
-<section
-	id="nav">
+<section id="nav">
 	<header>
 		<nav class="navbar navbar-expand-lg" id="nav-menu-container">
 			<div class="container-fluid mx-lg-5 mx-2">
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-				aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 					<div class="logo py-3 d-flex justify-content-center align-items-center">
-						<div class="me-3 ms-3"><img class="table-set-icon" 
-						src="{{ asset("./build/images/table-set-icon.svg") }}" alt="couverts de table"></div>
+						<div class="me-3 ms-3"><img class="table-set-icon" src="{{ asset("./build/images/table-set-icon.svg") }}" alt="couverts de table"></div>
 						<div class="d-flex flex-column text-center">
 							<span>QUAI ANTIQUE</span>
 							<span>Restaurant</span>
 						</div>
 						<div class=" ms-3 me-3">
-							<img class="table-set-icon" src="{{ asset("./build/images/table-set-icon.svg") }}" 
-							alt="couverts de table"></div>
+							<img class="table-set-icon" src="{{ asset("./build/images/table-set-icon.svg") }}" alt="couverts de table"></div>
 					</div>
 
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_home') ? 'active' : '' }}" aria-current="page" href="{{ path("app_home") }}">Accueil</a>
+							<a class="nav-link {{ (route_name starts with 'app_home') ? 'active' : '' }}" aria-current="page" href="{{ path("app_home")|e('html_attr') }}">Accueil</a>
+
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_carte') ? 'active' : '' }}" href="{{ path("app_carte") }}">Carte</a>
+							<a class="nav-link {{ (route_name starts with 'app_carte') ? 'active' : '' }}" href="{{ path("app_carte")|e('html_attr') }}">Carte</a>
+
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_menu') ? 'active' : '' }}" href="{{ path("app_menu") }}">Menu</a>
+							<a class="nav-link {{ (route_name starts with 'app_menu') ? 'active' : '' }}" href="{{ path("app_menu")|e('html_attr') }}">Menu</a>
+
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_galerie') ? 'active' : '' }}" href="{{ path("app_galerie") }}">Galerie</a>
+							<a class="nav-link {{ (route_name starts with 'app_galerie') ? 'active' : '' }}" href="{{ path("app_galerie")|e('html_attr') }}">Galerie</a>
 						</li>
+
 						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation") }}">Réservation</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ (route_name starts with 'app_contact') ? 'active' : '' }}" href="{{ path("app_contact") }}">Contact</a>
+							<a class="nav-link {{ (route_name starts with 'app_reservation') ? 'active' : '' }}" href="{{ path("app_reservation")|e('html_attr') }}">Réservation</a>
 						</li>
 
 						{% if (is_granted('ROLE_ADMIN')) %}
 							<li class="nav-item">
-								<a class="nav-link {{ (route_name starts with 'admin') ? 'active' : '' }}" href="{{ path("admin") }}">Admin</a>
+								<a class="nav-link {{ (route_name starts with 'admin') ? 'active' : '' }}"
+								href="{{ path("admin")|e('html_attr') }}">Admin</a>
 							</li>
 						{% endif %}
 					</ul>
 					
-
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						{% if app.user is null %}
-							<li class="nav-item nav-item-icon">
-								<a title="Connexion" class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">
-									<img src="{{asset("./build/images/login.svg")}}" alt="connection">
-								</a>
-							</li>
-						</li>
-
-					{% else %}
+						<a class="nav-link {{ (route_name starts with 'app_contact') ? 'active' : '' }}" href="{{ path("app_contact")|e('html_attr') }}">Contact</a>
+					</li>
+					{% if app.user is null %}
 						<li class="nav-item nav-item-icon">
-							<a title="Déconnexion" class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">
-								<img src="{{asset("./build/images/logout.svg")}}" alt="deconnection">
+							<a title="Connexion" class="nav-link {{ (route_name starts with 'security.login') ? 'active' : '' }}" href="{{ path("security.login") }}">
+								<img src="{{asset("./build/images/login.svg")|e('html_attr') }}" alt="connection">
 							</a>
 						</li>
-					{% endif %}
-				</ul>
-			</div>
+					</li>
+
+				{% else %}
+					<li class="nav-item nav-item-icon">
+						<a title="Déconnexion" class="nav-link {{ (route_name starts with 'security.logout') ? 'active' : '' }}" href="{{ path("security.logout") }}">
+							<img src="{{asset("./build/images/logout.svg")|e('html_attr') }}" alt="deconnection">
+
+						</a>
+					</li>
+				{% endif %}
+			</ul>
 		</div>
-	</nav>
-</header></section><!-- Header End -->
+	</div>
+</nav></header></section><!-- Header End -->

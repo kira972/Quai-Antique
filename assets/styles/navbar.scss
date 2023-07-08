@@ -94,7 +94,8 @@ nav .nav-link {
 
 nav .nav-item:not(.nav-item-icon) .nav-link.active {
   color: #ffffff !important;
-  background-color: #353535;
+  background-color: #000000;
+  border-radius: 15%;
 }
 
 nav .navbar-nav {

@@ -3,6 +3,7 @@
 {% block title %}Quai Antique - Connexion{% endblock %}
 
 {% block body %}
+<section id="login">
 
     <main class="login-page">
     <div class="container">
@@ -22,9 +23,10 @@
 
         <form action="{{ path('security.login') }}" method="post" class="login-form">
             <div class="row mb-3">
+
                 <div class="label col-12">
                     <label for="username" class="form-label mt-4">Adresse email</label>
-<input type="email" class="form-control" id="username" placeholder="quaiAntique@restaurant.fr" name="_username" value="{{ last_username }}">
+        <input type="email" class="form-control" id="username" placeholder="quaiAntique@restaurant.fr" name="_username" value="{{ last_username }}">
 
                 </div>
                 <div class="label col-12">
@@ -42,6 +44,7 @@
         </form>
     </div>
 </main>
+</section>
 {{ include("_partials/_contact.html.twig", {'openingTimes': openingTimes, 'restaurant': restaurant}) }}
 <!-- Login Section End -->
 {% endblock %}

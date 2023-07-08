@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Allergie;
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 
 class ReservationType extends AbstractType
 {
@@ -68,7 +70,12 @@ class ReservationType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'label' => 'Allergies',
-            ]);
+            ])
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'contact',
+            ]
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
